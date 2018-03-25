@@ -3,9 +3,18 @@
 }
 
 .small {
-  width: 30px;
+  width: 100px;
 }
 
 .large {
   width: 200px;
+}
+
+.ImgQuestionWrapper {
+  display: inline-block;
+}
+
+p {
+  display: block;
+  margin: 0px 10px;
 }

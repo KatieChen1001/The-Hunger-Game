@@ -4,7 +4,7 @@ import Prompt from "./Prompt.js";
 import Questionnaire from "./Questionnaire.js";
 import NextBtn from "./NextBtn.js";
 import RoundOne from "./RoundOne.js";
-import RoundTwo from "./RoundTwo.js";
+import Report from "./Report.js";
 import Reveal from "react-reveal/Reveal";
 
 class App extends Component {
@@ -14,7 +14,7 @@ class App extends Component {
     this.renderSwitch = this.renderSwitch.bind(this);
     this.onClickPassState = this.onClickPassState.bind(this);
     this.state = {
-      appStage: 2,
+      appStage: 0,
       questionnaire: {
         stage: "",
         foodieAlias: "",
@@ -23,7 +23,15 @@ class App extends Component {
         waimai: "",
         emoji: "",
         favorite: "",
-        restaurant: ""
+        restaurant: "",
+        dataInApp: ""
+      },
+      roundOne: {
+        stage: "",
+        foodGrabbed: "",
+        sword: "",
+        shield: "",
+        dataInApp: ""
       }
     };
   }
@@ -33,12 +41,16 @@ class App extends Component {
     this.setState({
       appStage: appStageNum
     });
-
     this.renderSwitch(this.state.appStage);
   }
 
-  onClickPassState(stageChange) {
-    this.state.questionnaire = stageChange;
+  onClickPassState(stateChange) {
+    if (stateChange.dataInApp === "questionnaire") {
+      this.state.questionnaire = stateChange;
+    } else if (stateChange.dataInApp === "roundOne") {
+      this.state.roundOne = stateChange;
+    }
+
     this.onClick();
   }
 
@@ -47,11 +59,14 @@ class App extends Component {
       case 1:
         return <Questionnaire onClick={this.onClickPassState} />;
       case 2:
-        return <RoundOne onClick={this.onClick} />;
+        return <RoundOne onClick={this.onClickPassState} />;
       case 3:
-        return <RoundTwo onClick={this.onClick} />;
-      case 4:
-        return <h1> Round Three </h1>;
+        return (
+          <Report
+            questionnaireData={this.state.questionnaire}
+            roundOneData={this.state.roundOne}
+          />
+        );
       default:
         return <Prompt onClick={this.onClick} />;
     }
@@ -60,7 +75,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.renderSwitch(this.state.appStage)}
+        <div className="textWrapper">
+          {this.renderSwitch(this.state.appStage)}
+        </div>
         <footer>
           <div>
             Icons made by{" "}

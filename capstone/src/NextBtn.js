@@ -18,7 +18,7 @@ class NextBtn extends Component {
         <img
           src="http://localhost:3000/assets/next.svg"
           onClick={this.onClick}
-          width="30px"
+          width="40px"
         />
       </div>
     );

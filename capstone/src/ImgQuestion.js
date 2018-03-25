@@ -10,24 +10,24 @@ class ImgQuestion extends Component {
   }
 
   onClick() {
-    this.props.onClick(this.props.label);
+    this.props.onClick(this.props.name, this.props.label);
   }
 
   render() {
-    const { children, size, variant, onClick } = this.props;
+    const { size, onClick } = this.props;
 
     let classes = "svgImg";
     if (size) classes += " " + size;
 
     return (
-      <div>
+      <div className="ImgQuestionWrapper">
         <img
           className={classes}
           src={"http://localhost:3000/assets/" + this.props.label + ".svg"}
           onClick={this.onClick}
-          alt={this.props.label}
+          alt={this.props.name}
         />
-        <p>{this.props.label}</p>
+        <p>{this.props.description}</p>
       </div>
     );
   }

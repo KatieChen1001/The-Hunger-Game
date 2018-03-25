@@ -24,24 +24,3 @@ input[type="radio"] {
 input[type="radio"]:checked {
   border: 6px solid black;
 }
-
-/* button,
-legend {
-  color: white;
-  background-color: black;
-  padding: 5px 10px;
-  border-radius: 0;
-  border: 0;
-  font-size: 14px;
-}
-
-button:hover,
-button:focus {
-  color: #999;
-}
-
-button:active {
-  background-color: white;
-  color: black;
-  outline: 1px solid black;
-} */
