@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import Reveal from "react-reveal/Reveal";
+// import Reveal from "react-reveal/Reveal";
 import NextBtn from "./NextBtn.js";
 import ImgQuestion from "./ImgQuestion.js";
+import "./RoundOne.css";
 
 class RoundOne extends Component {
   constructor(props) {
@@ -43,43 +44,41 @@ class RoundOne extends Component {
     switch (params) {
       case 1:
         return (
-          <div className="iconWrapper">
+          <div>
             <h1>Grab</h1>
-            <ImgQuestion
-              label="grab/porridge"
-              name="foodGrabbed"
-              size="small"
-              onClick={this.handleImgQuestionChange}
-              description="Porridge(皮蛋瘦肉粥)"
-            />
-            <ImgQuestion
-              label="grab/burger"
-              name="foodGrabbed"
-              size="small"
-              onClick={this.handleImgQuestionChange}
-              description="Burger(香辣鸡腿堡)"
-            />
-            <ImgQuestion
-              label="grab/cai"
-              name="foodGrabbed"
-              size="small"
-              onClick={this.handleImgQuestionChange}
-              description="Kung Pao Chicken(宫保鸡丁)"
-            />
-            <ImgQuestion
-              label="grab/wrap"
-              name="foodGrabbed"
-              size="small"
-              onClick={this.handleImgQuestionChange}
-              description="Wraps(肉夹馍)"
-            />
-            <ImgQuestion
-              label="grab/rice"
-              name="foodGrabbed"
-              size="small"
-              onClick={this.handleImgQuestionChange}
-              description="Fried Rice(扬州炒饭)"
-            />
+            <p>Choose ONE favorite from the item below:</p>
+            <div className="iconWrapper">
+              <ImgQuestion
+                label="grab/porridge"
+                name="foodGrabbed"
+                onClick={this.handleImgQuestionChange}
+                description="Porridge(皮蛋瘦肉粥)"
+              />
+              <ImgQuestion
+                label="grab/burger"
+                name="foodGrabbed"
+                onClick={this.handleImgQuestionChange}
+                description="Burger(香辣鸡腿堡)"
+              />
+              <ImgQuestion
+                label="grab/cai"
+                name="foodGrabbed"
+                onClick={this.handleImgQuestionChange}
+                description="Kung Pao Chicken(宫保鸡丁)"
+              />
+              <ImgQuestion
+                label="grab/wrap"
+                name="foodGrabbed"
+                onClick={this.handleImgQuestionChange}
+                description="Wraps(肉夹馍)"
+              />
+              <ImgQuestion
+                label="grab/rice"
+                name="foodGrabbed"
+                onClick={this.handleImgQuestionChange}
+                description="Fried Rice(扬州炒饭)"
+              />
+            </div>
             <NextBtn onClick={this.onNext} />
           </div>
         );
@@ -87,38 +86,45 @@ class RoundOne extends Component {
         return (
           <div>
             <h1>Pack</h1>
-            <div className="swords">
-              <ImgQuestion
-                label="pack/sword/chopsticks"
-                name="sword"
-                size="small"
-                onClick={this.handleImgQuestionChange}
-                description="Kung Fu Chopsticks"
-              />
-              <p>
-                Bonus Feature: In moment of emergency can be used to make a raft
-              </p>
-              <ImgQuestion
-                label="pack/sword/plastic"
-                name="sword"
-                size="small"
-                onClick={this.handleImgQuestionChange}
-                description="Plastic Combo"
-              />
-              <p>Bonus Feature: Can be used as darts, or fish spears</p>
-              <ImgQuestion
-                label="pack/sword/silverware"
-                name="sword"
-                size="small"
-                onClick={this.handleImgQuestionChange}
-                description="Louis IVX Royal Silverware"
-              />
-              <p>
-                Bonus Feature: When pulled out will radiate snobbiness which can
-                blind opponents
-              </p>
+            <div className="iconWrapper">
+              <div className="weaponCard">
+                <ImgQuestion
+                  label="pack/sword/chopsticks"
+                  name="sword"
+                  size="small"
+                  onClick={this.handleImgQuestionChange}
+                  description="Kung Fu Chopsticks"
+                />
+                <p>
+                  Bonus Feature: In moment of emergency can be used to make a
+                  raft
+                </p>
+              </div>
+              <div className="weaponCard">
+                <ImgQuestion
+                  label="pack/sword/plastic"
+                  name="sword"
+                  size="small"
+                  onClick={this.handleImgQuestionChange}
+                  description="Plastic Combo"
+                />
+                <p>Bonus Feature: Can be used as darts, or fish spears</p>
+              </div>
+              <div className="weaponCard">
+                <ImgQuestion
+                  label="pack/sword/silverware"
+                  name="sword"
+                  size="small"
+                  onClick={this.handleImgQuestionChange}
+                  description="Louis IVX Royal Silverware"
+                />
+                <p>
+                  Bonus Feature: When pulled out will radiate snobbiness which
+                  can blind opponents
+                </p>
+              </div>
             </div>
-            <div className="shields">
+            <div className="iconWrapper">
               <ImgQuestion
                 label="pack/shield/plastic"
                 name="shield"
@@ -174,7 +180,11 @@ class RoundOne extends Component {
   }
 
   render() {
-    return <div>{this.renderSwitch(this.state.stage)}</div>;
+    return (
+      <div className="roundOneWrapper">
+        {this.renderSwitch(this.state.stage)}
+      </div>
+    );
   }
 }
 

@@ -14,11 +14,11 @@ class NextBtn extends Component {
   render() {
     return (
       <img
-        src="http://localhost:3000/assets/next.svg"
+        src="http://localhost:3000/assets/back.svg"
         onClick={this.onClick}
         width="40px"
-        alt="Next Button"
-        className="NextBtn"
+        alt="Back Button"
+        className="BackBtn"
       />
     );
   }

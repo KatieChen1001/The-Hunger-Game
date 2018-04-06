@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Questionnaire.css";
 import NextBtn from "./NextBtn.js";
+import BackBtn from "./BackBtn.js";
 import ImgQuestion from "./ImgQuestion.js";
 
 class Questionnaire extends Component {
@@ -8,6 +9,7 @@ class Questionnaire extends Component {
     super(props);
 
     this.onNext = this.onNext.bind(this);
+    this.onPrevious = this.onPrevious.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleImgQuestionChange = this.handleImgQuestionChange.bind(this);
     this.renderSwitch = this.renderSwitch.bind(this);
@@ -47,6 +49,14 @@ class Questionnaire extends Component {
     this.renderSwitch(stageNum);
   }
 
+  onPrevious() {
+    let stageNum = this.state.stage - 1;
+    this.setState({
+      stage: stageNum
+    });
+    this.renderSwitch(stageNum);
+  }
+
   switchSection() {
     this.props.onClick(this.state);
   }
@@ -62,27 +72,30 @@ class Questionnaire extends Component {
               label="ninja/fierceGirl"
               name="emoji"
               onClick={this.handleImgQuestionChange}
-              description="somedes"
+              description="Katniss Everdeen"
             />
             <ImgQuestion
               label="ninja/smileyGirl"
               name="emoji"
               onClick={this.handleImgQuestionChange}
-              description="somedes"
+              description="Primrose Everdeen"
             />
             <ImgQuestion
               label="ninja/smileyBoy"
               name="emoji"
               onClick={this.handleImgQuestionChange}
-              description="somedes"
+              description="Gale Hawthorne"
             />
             <ImgQuestion
               label="ninja/starvingBoy"
               name="emoji"
               onClick={this.handleImgQuestionChange}
-              description="somedes"
+              description="Peeta Mellark"
             />
-            <NextBtn onClick={this.onNext} />
+            <div>
+              <BackBtn onClick={this.onPrevious} />
+              <NextBtn onClick={this.onNext} />
+            </div>
           </div>
         );
       case 2:
@@ -92,10 +105,10 @@ class Questionnaire extends Component {
             <input
               type="radio"
               name="waimai"
-              value="fanantic"
+              value="fanatic"
               onClick={this.handleInputChange}
             />
-            <label htmlFor="fanantic">A. Daily</label>
+            <label htmlFor="fanatic">A. Daily</label>
             <input
               type="radio"
               name="waimai"
@@ -117,7 +130,10 @@ class Questionnaire extends Component {
               onClick={this.handleInputChange}
             />
             <label htmlFor="amateur">D. 1 -3 times a month</label>
-            <NextBtn onClick={this.onNext} />
+            <div>
+              <BackBtn onClick={this.onPrevious} />
+              <NextBtn onClick={this.onNext} />
+            </div>
           </div>
         );
       case 3:
@@ -132,24 +148,28 @@ class Questionnaire extends Component {
               onClick={this.handleImgQuestionChange}
               name="emoji"
               description="hangry"
+              size="small"
             />
             <ImgQuestion
               label="emoji/impatient"
               onClick={this.handleImgQuestionChange}
               name="emoji"
               description="can't wait"
+              size="small"
             />
             <ImgQuestion
               label="emoji/drooling"
               onClick={this.handleImgQuestionChange}
               name="emoji"
               description="drooling"
+              size="small"
             />
             <ImgQuestion
               label="emoji/greedy"
               onClick={this.handleImgQuestionChange}
               name="emoji"
               description="greedy"
+              size="small"
             />
             <NextBtn onClick={this.onNext} />
           </div>
@@ -163,6 +183,7 @@ class Questionnaire extends Component {
               name="favorite"
               onChange={this.handleInputChange}
             />
+            <p>Nope I do not stress eat</p>
             <NextBtn onClick={this.onNext} />
           </div>
         );
@@ -170,32 +191,32 @@ class Questionnaire extends Component {
         return (
           <div>
             <h1>
-              Q4. The following four restaurant all sell exactly the same
+              Q4. The following four restaurant all sell exactly the same{" "}
               {this.state.favorite}. Where would you order from?
             </h1>
             <ImgQuestion
-              label="restaurant/fancy"
+              label="restaurant/cheap"
               name="resturant"
               onClick={this.handleImgQuestionChange}
-              description="Fancy & Boogie"
-            />
-            <ImgQuestion
-              label="restaurant/green"
-              name="resturant"
-              onClick={this.handleImgQuestionChange}
-              description="Organic & Green"
+              size="large"
             />
             <ImgQuestion
               label="restaurant/corner"
               name="resturant"
               onClick={this.handleImgQuestionChange}
-              description="Right Around the Corner"
+              size="large"
             />
             <ImgQuestion
-              label="restaurant/cheap"
+              label="restaurant/green"
               name="resturant"
               onClick={this.handleImgQuestionChange}
-              description="Cheap-ass Food"
+              size="large"
+            />
+            <ImgQuestion
+              label="restaurant/fancy"
+              name="resturant"
+              onClick={this.handleImgQuestionChange}
+              size="large"
             />
             <NextBtn onClick={this.onNext} />
           </div>
@@ -219,7 +240,9 @@ class Questionnaire extends Component {
               name="foodieAlias"
               onChange={this.handleInputChange}
             />
-            <NextBtn onClick={this.onNext} />
+            <div>
+              <NextBtn onClick={this.onNext} />
+            </div>
           </div>
         );
     }

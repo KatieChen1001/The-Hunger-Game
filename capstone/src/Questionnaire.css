@@ -24,3 +24,11 @@ input[type="radio"] {
 input[type="radio"]:checked {
   border: 6px solid black;
 }
+
+span.emoji,
+span.resturant {
+  color: #575757;
+  font-size: 14px;
+  display: block;
+  margin-top: 0.4em;
+}

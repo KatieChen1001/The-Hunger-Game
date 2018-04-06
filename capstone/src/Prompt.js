@@ -1,28 +1,47 @@
 import React, { Component } from "react";
-import Fade from "react-reveal/Fade";
 import Reveal from "react-reveal/Reveal";
 import NextBtn from "./NextBtn.js";
+import BackBtn from "./BackBtn.js";
 import "./animate.css";
 
 class Prompt extends Component {
   constructor(props) {
     super(props);
 
-    this.onClick = this.onClick.bind(this);
+    this.onNext = this.onNext.bind(this);
     this.switchSection = this.switchSection.bind(this);
     this.renderSwitch = this.renderSwitch.bind(this);
+
+    this.unqualified = this.unqualified.bind(this);
+    this.onPrevious = this.onPrevious.bind(this);
 
     this.state = {
       stage: 0
     };
   }
 
-  onClick() {
+  onNext() {
     let stageNum = this.state.stage + 1;
     this.setState({
       stage: stageNum
     });
 
+    this.renderSwitch(stageNum);
+  }
+
+  unqualified() {
+    let stageNum = this.state.stage + 2;
+    this.setState({
+      stage: stageNum
+    });
+    this.renderSwitch(stageNum);
+  }
+
+  onPrevious() {
+    let stageNum = 0;
+    this.setState({
+      stage: stageNum
+    });
     this.renderSwitch(stageNum);
   }
 
@@ -42,8 +61,8 @@ class Prompt extends Component {
                 question: Have you used eleme or any other online food delivery
                 services before?
               </p>
-              <button onClick={this.onClick}>Yes</button>
-              <button>No</button>
+              <button onClick={this.onNext}>Yes</button>
+              <button onClick={this.unqualified}>No</button>
             </div>
           </Reveal>
         );
@@ -51,20 +70,30 @@ class Prompt extends Component {
         return (
           <Reveal effect="fadeInUp">
             <p>
-              Alas! There is still food left for you! You have to complete three
-              rounds of tasks to receive your aliments.
+              Alas! There is still food left for you! Before you are sent off to
+              fight for it, please answer the following questions in order to
+              build your tribute profile.
             </p>
-            <NextBtn onClick={this.onClick} />
+            <div>
+              <BackBtn onClick={this.onPrevious} />
+              <NextBtn onClick={this.switchSection} />
+            </div>
           </Reveal>
         );
       case 3:
         return (
           <Reveal effect="fadeInUp">
-            <p>
-              Before you are sent off to fight for food, please answer the
-              following questions in order to build your tribute profile.
-            </p>
-            <NextBtn onClick={this.switchSection} />
+            <h1>
+              You are UNQUALIFIED for the game{" "}
+              <img
+                src="http://localhost:3000/assets/sad.svg"
+                width="30px"
+                align="middle"
+              />
+            </h1>
+            <p>Please go explore other capstone projects at the final show</p>
+            <BackBtn onClick={this.onPrevious} />
+            <span>Back to Home</span>
           </Reveal>
         );
       default:
@@ -73,12 +102,11 @@ class Prompt extends Component {
             <div>
               <h1>Welcome to The Hunger Game</h1>
               <p>
-                {" "}
                 You wake up from a food coma and realize that you are on Planet
                 Starvation. The only way to sustain yourself on Planet
                 Starvation is to participate in its annual Hunger Game.
               </p>
-              <NextBtn onClick={this.onClick} />
+              <NextBtn onClick={this.onNext} />
             </div>
           </Reveal>
         );

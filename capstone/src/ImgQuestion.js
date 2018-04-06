@@ -7,10 +7,18 @@ class ImgQuestion extends Component {
     super(props);
 
     this.onClick = this.onClick.bind(this);
+
+    this.state = {
+      mask: "inactive"
+    };
   }
 
   onClick() {
     this.props.onClick(this.props.name, this.props.label);
+    let active = this.state.mask === "active" ? "inactive" : "active";
+    this.setState({
+      mask: active
+    });
   }
 
   render() {
@@ -22,12 +30,12 @@ class ImgQuestion extends Component {
     return (
       <div className="ImgQuestionWrapper">
         <img
-          className={classes}
+          className={classes + " " + this.state.mask}
           src={"http://localhost:3000/assets/" + this.props.label + ".svg"}
           onClick={this.onClick}
           alt={this.props.name}
         />
-        <p>{this.props.description}</p>
+        <span className={this.props.name}>{this.props.description}</span>
       </div>
     );
   }
@@ -35,7 +43,7 @@ class ImgQuestion extends Component {
 
 ImgQuestion.propTypes = {
   onClick: PropTypes.func,
-  size: PropTypes.oneOf(["small", "medium", "large"])
+  size: PropTypes.oneOf(["small", "large"])
 };
 
 export default ImgQuestion;

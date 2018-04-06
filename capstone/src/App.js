@@ -5,7 +5,6 @@ import Questionnaire from "./Questionnaire.js";
 import NextBtn from "./NextBtn.js";
 import RoundOne from "./RoundOne.js";
 import Report from "./Report.js";
-import Reveal from "react-reveal/Reveal";
 
 class App extends Component {
   constructor(props) {
@@ -14,7 +13,7 @@ class App extends Component {
     this.renderSwitch = this.renderSwitch.bind(this);
     this.onClickPassState = this.onClickPassState.bind(this);
     this.state = {
-      appStage: 0,
+      appStage: 1,
       questionnaire: {
         stage: "",
         foodieAlias: "",
@@ -46,9 +45,13 @@ class App extends Component {
 
   onClickPassState(stateChange) {
     if (stateChange.dataInApp === "questionnaire") {
-      this.state.questionnaire = stateChange;
+      this.setState({
+        questionnaire: stateChange
+      });
     } else if (stateChange.dataInApp === "roundOne") {
-      this.state.roundOne = stateChange;
+      this.setState({
+        roundOne: stateChange
+      });
     }
 
     this.onClick();

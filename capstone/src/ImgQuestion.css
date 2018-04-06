@@ -1,20 +1,40 @@
+img:hover {
+  cursor: pointer;
+  transition: opacity 0.2s;
+  opacity: 0.2;
+}
+
 .svgImg {
-  width: 50px;
+  width: 70px;
 }
 
 .small {
-  width: 100px;
+  width: 50px;
 }
 
 .large {
-  width: 200px;
+  width: 500px;
 }
 
 .ImgQuestionWrapper {
   display: inline-block;
+  margin: 1em;
 }
 
 p {
   display: block;
   margin: 0px 10px;
+}
+.active {
+  opacity: 0.2;
+}
+
+.inactive {
+  opacity: 1;
+}
+
+span {
+  color: #575757;
+  font-size: 14px;
+  display: block;
 }
