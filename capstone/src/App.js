@@ -5,6 +5,7 @@ import Questionnaire from "./Questionnaire.js";
 import NextBtn from "./NextBtn.js";
 import RoundOne from "./RoundOne.js";
 import Report from "./Report.js";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class App extends Component {
     this.renderSwitch = this.renderSwitch.bind(this);
     this.onClickPassState = this.onClickPassState.bind(this);
     this.state = {
-      appStage: 1,
+      appStage: 0,
       questionnaire: {
         stage: "",
         foodieAlias: "",
@@ -60,8 +61,24 @@ class App extends Component {
   renderSwitch(params) {
     switch (params) {
       case 1:
+        // return (
+        //   <Route
+        //     path="/profile"
+        //     component={props => {<Questionnaire onClick={this.onClickPassState} />;}}
+        //   />
+        // );
         return <Questionnaire onClick={this.onClickPassState} />;
+
       case 2:
+        // return (
+        //   <Route
+        //     path="/roundOne"
+        //     component={props => {
+        //       return <RoundOne onClick={this.onClickPassState} />;
+        //     }}
+        //   />
+        // );
+
         return <RoundOne onClick={this.onClickPassState} />;
       case 3:
         return (
@@ -71,6 +88,15 @@ class App extends Component {
           />
         );
       default:
+        // return (
+        //   <Route
+        //     exact
+        //     path="/"
+        //     component={props => {
+        //       return <Prompt onClick={this.onClick} />;
+        //     }}
+        //   />
+        // );
         return <Prompt onClick={this.onClick} />;
     }
   }
@@ -78,9 +104,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="textWrapper">
+        <Router className="textWrapper">
           {this.renderSwitch(this.state.appStage)}
-        </div>
+        </Router>
         <footer>
           <div>
             Icons made by{" "}

@@ -77,16 +77,40 @@ class Report extends Component {
       }
     };
 
-    // if (!lookUpEmoji[q.emoji]) {
-    //   return console.log("I MESSED UP");
-    // }
+    let hungerLevel, tendTo, avgFreq, factor, assumption, topFavourite;
 
-    const hungerLevel = lookUpEmoji[q.emoji].h;
-    const tendTo = lookUpEmoji[q.emoji].t;
-    const avgFreq = lookUpOrderFreq[q.waimai].avg;
-    const factor = lookUpRestaurant[q.resturant].factor;
-    const assumption = lookUpRestaurant[q.resturant].asump;
-    const topFavourite = lookUpFoodGrabbed[one.foodGrabbed].top;
+    if (
+      !lookUpEmoji[q.emoji] ||
+      !lookUpOrderFreq[q.waimai] ||
+      !lookUpRestaurant[q.resturant] ||
+      !lookUpFoodGrabbed[one.foodGrabbed]
+    ) {
+      hungerLevel = tendTo = avgFreq = factor = assumption = topFavourite = (
+        <span>Oooops looks like you missed this one</span>
+      );
+    } else {
+      hungerLevel = lookUpEmoji[q.emoji].h;
+      tendTo = lookUpEmoji[q.emoji].t;
+      avgFreq = lookUpOrderFreq[q.waimai].avg;
+      factor = lookUpRestaurant[q.resturant].factor;
+      assumption = lookUpRestaurant[q.resturant].asump;
+      topFavourite = lookUpFoodGrabbed[one.foodGrabbed].top;
+    }
+
+    if (!q.foodieAlias) {
+      q.foodieAlias = "Annonymous Agent";
+    }
+
+    if (!q.ninja) {
+      q.ninja = "sad";
+    }
+    if (!q.emoji) {
+      q.emoji = "sad";
+    }
+
+    if (!q.resturant) {
+      q.resturant = "sad";
+    }
 
     return (
       <div>
@@ -102,6 +126,7 @@ class Report extends Component {
           Your hunger level is <span>{hungerLevel}</span>. You tend to{" "}
           <span>{tendTo}</span>.
         </h3>
+
         <ImgQuestion label={q.emoji} />
         <h3>
           Your choice of restaurant was

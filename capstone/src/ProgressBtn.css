@@ -1,0 +1,14 @@
+.active {
+  fill: white;
+}
+.inactive {
+  fill: black;
+}
+
+.progressBtnName-span {
+  display: none;
+}
+.progressBtnName-container {
+  display: inline-block;
+  margin-right: 0.2em;
+}

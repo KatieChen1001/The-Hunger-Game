@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Reveal from "react-reveal/Reveal";
 import NextBtn from "./NextBtn.js";
 import BackBtn from "./BackBtn.js";
+
 import "./animate.css";
 
 class Prompt extends Component {

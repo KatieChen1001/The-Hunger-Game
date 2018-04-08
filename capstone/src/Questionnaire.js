@@ -3,6 +3,8 @@ import "./Questionnaire.css";
 import NextBtn from "./NextBtn.js";
 import BackBtn from "./BackBtn.js";
 import ImgQuestion from "./ImgQuestion.js";
+import Progress from "./Progress.js";
+import { Link } from "react-router-dom";
 
 class Questionnaire extends Component {
   constructor(props) {
@@ -14,6 +16,8 @@ class Questionnaire extends Component {
     this.handleImgQuestionChange = this.handleImgQuestionChange.bind(this);
     this.renderSwitch = this.renderSwitch.bind(this);
     this.switchSection = this.switchSection.bind(this);
+
+    this.progressBarClicked = this.progressBarClicked.bind(this);
 
     this.state = {
       stage: 0,
@@ -27,6 +31,19 @@ class Questionnaire extends Component {
     };
   }
 
+  // =========================== //
+  // ***** Progress Bar ****** //
+  // =========================== //
+  progressBarClicked(stageNum) {
+    this.setState({
+      stage: stageNum
+    });
+    this.renderSwitch(stageNum);
+  }
+
+  // =========================== //
+  // ***** Handling user input changes ****** //
+  // =========================== //
   handleInputChange(e) {
     let name = e.target.name;
     let value = e.target.value;
@@ -34,7 +51,6 @@ class Questionnaire extends Component {
       [name]: value
     });
   }
-
   handleImgQuestionChange(name, imgURL) {
     this.setState({
       [name]: imgURL
@@ -249,7 +265,17 @@ class Questionnaire extends Component {
   }
 
   render() {
-    return <div>{this.renderSwitch(this.state.stage)}</div>;
+    return (
+      <div>
+        <Progress
+          QuestionNum={this.state.stage}
+          previousSection="/"
+          nextSection="/roundOne"
+          onClick={this.progressBarClicked}
+        />
+        {this.renderSwitch(this.state.stage)}
+      </div>
+    );
   }
 }
 
