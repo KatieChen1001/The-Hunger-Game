@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import NextBtn from "./NextBtn.js";
 import ImgQuestion from "./ImgQuestion.js";
 import "./RoundOne.css";
+import { Link } from "react-router-dom";
 
 class RoundOne extends Component {
   constructor(props) {
@@ -44,7 +45,7 @@ class RoundOne extends Component {
     switch (params) {
       case 1:
         return (
-          <div>
+          <div className="roundOneWrapper">
             <h1>Grab</h1>
             <p>Choose ONE favorite from the item below:</p>
             <div className="iconWrapper">
@@ -84,8 +85,13 @@ class RoundOne extends Component {
         );
       case 2:
         return (
-          <div>
+          <div className="roundOneWrapper">
             <h1>Pack</h1>
+            <p>
+              Choose ONE type of cutlery and ONE type of container. Note they
+              are don’t just protect your food; they are your sword and shield
+              as well!
+            </p>
             <div className="iconWrapper">
               <div className="weaponCard">
                 <ImgQuestion
@@ -124,48 +130,64 @@ class RoundOne extends Component {
                 </p>
               </div>
             </div>
+            <NextBtn onClick={this.onNext} />
+          </div>
+        );
+
+      case 3:
+        return (
+          <div className="roundOneWrapper">
+            <h1>Pack</h1>
+            <p>Choose ONE type of container.</p>
             <div className="iconWrapper">
-              <ImgQuestion
-                label="pack/shield/plastic"
-                name="shield"
-                size="small"
-                onClick={this.handleImgQuestionChange}
-                description="Poisonous Plastic"
-              />
-              <p>Bonus Feature: When thrown away can poison your opponents</p>
-              <ImgQuestion
-                label="pack/shield/paper"
-                name="shield"
-                size="small"
-                onClick={this.handleImgQuestionChange}
-                description="Paper Thin"
-              />
-              <p>Bonus Feature: Sharp paper blade can cut down trees</p>
-              <ImgQuestion
-                label="pack/shield/tinFoil"
-                name="shield"
-                size="small"
-                onClick={this.handleImgQuestionChange}
-                description="Tin-Foil All Proof"
-              />
-              <p>Bonus Feature: Waterproof, thermal insulation, bulletproof</p>
+              <div className="weaponCard">
+                <ImgQuestion
+                  label="pack/shield/plastic"
+                  name="shield"
+                  size="small"
+                  onClick={this.handleImgQuestionChange}
+                  description="Poisonous Plastic"
+                />
+                <p>Bonus Feature: When thrown away can poison your opponents</p>
+              </div>
+              <div className="weaponCard">
+                <ImgQuestion
+                  label="pack/shield/paper"
+                  name="shield"
+                  size="small"
+                  onClick={this.handleImgQuestionChange}
+                  description="Paper Thin"
+                />
+                <p>Bonus Feature: Sharp paper blade can cut down trees</p>
+              </div>
+              <div className="weaponCard">
+                <ImgQuestion
+                  label="pack/shield/tinFoil"
+                  name="shield"
+                  size="small"
+                  onClick={this.handleImgQuestionChange}
+                  description="Tin-Foil All Proof"
+                />
+                <p>
+                  Bonus Feature: Waterproof, thermal insulation, bulletproof
+                </p>
+              </div>
             </div>
             <NextBtn onClick={this.onNext} />
           </div>
         );
-      case 3:
+      case 4:
         return (
-          <div>
-            <p>
-              Food [check] Swords & weapons [check] Onwards and upwards into the
-              chaotic Shanghai traffic! “Expelliarmus!” ---- 滴，滴，滴----
-            </p>
-            <NextBtn onClick={this.switchSection} />
+          <div className="roundOneWrapper">
+            <p>Weapon Ready! 3, 2, 1, GO!</p>
+            <Link to="/hungerReport">
+              <NextBtn onClick={this.switchSection} />
+            </Link>
           </div>
         );
       default:
         return (
-          <div>
+          <div className="roundOneWrapper">
             <h1>Round I Grab and Pack</h1>
             <p>
               Instructions: The Hunger Game begins as all candidates dash
@@ -180,11 +202,7 @@ class RoundOne extends Component {
   }
 
   render() {
-    return (
-      <div className="roundOneWrapper">
-        {this.renderSwitch(this.state.stage)}
-      </div>
-    );
+    return <div>{this.renderSwitch(this.state.stage)}</div>;
   }
 }
 

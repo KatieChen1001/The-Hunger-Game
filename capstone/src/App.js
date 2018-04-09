@@ -61,24 +61,8 @@ class App extends Component {
   renderSwitch(params) {
     switch (params) {
       case 1:
-        // return (
-        //   <Route
-        //     path="/profile"
-        //     component={props => {<Questionnaire onClick={this.onClickPassState} />;}}
-        //   />
-        // );
         return <Questionnaire onClick={this.onClickPassState} />;
-
       case 2:
-        // return (
-        //   <Route
-        //     path="/roundOne"
-        //     component={props => {
-        //       return <RoundOne onClick={this.onClickPassState} />;
-        //     }}
-        //   />
-        // );
-
         return <RoundOne onClick={this.onClickPassState} />;
       case 3:
         return (
@@ -88,45 +72,67 @@ class App extends Component {
           />
         );
       default:
-        // return (
-        //   <Route
-        //     exact
-        //     path="/"
-        //     component={props => {
-        //       return <Prompt onClick={this.onClick} />;
-        //     }}
-        //   />
-        // );
         return <Prompt onClick={this.onClick} />;
     }
   }
 
   render() {
     return (
-      <div className="App">
-        <Router className="textWrapper">
-          {this.renderSwitch(this.state.appStage)}
-        </Router>
-        <footer>
-          <div>
-            Icons made by{" "}
-            <a href="http://www.freepik.com" title="Freepik">
-              Freepik
-            </a>{" "}
-            from{" "}
-            <a href="https://www.flaticon.com/" title="Flaticon">
-              www.flaticon.com
-            </a>{" "}
-            is licensed by{" "}
-            <a
-              href="http://creativecommons.org/licenses/by/3.0/"
-              title="Creative Commons BY 3.0"
-              target="_blank">
-              CC 3.0 BY
-            </a>
+      <Router>
+        <div className="App">
+          <div className="textWrapper">
+            <Route
+              exact
+              path="/"
+              component={props => {
+                return <Prompt onClick={this.onClick} />;
+              }}
+            />
+            <Route
+              path="/profile"
+              component={props => {
+                return <Questionnaire onClick={this.onClickPassState} />;
+              }}
+            />
+            <Route
+              path="/roundOne"
+              component={props => {
+                return <RoundOne onClick={this.onClickPassState} />;
+              }}
+            />
+            <Route
+              path="/hungerReport"
+              component={props => {
+                return (
+                  <Report
+                    questionnaireData={this.state.questionnaire}
+                    roundOneData={this.state.roundOne}
+                  />
+                );
+              }}
+            />
           </div>
-        </footer>
-      </div>
+          <footer>
+            <div>
+              Icons made by{" "}
+              <a href="http://www.freepik.com" title="Freepik">
+                Freepik
+              </a>{" "}
+              from{" "}
+              <a href="https://www.flaticon.com/" title="Flaticon">
+                www.flaticon.com
+              </a>{" "}
+              is licensed by{" "}
+              <a
+                href="http://creativecommons.org/licenses/by/3.0/"
+                title="Creative Commons BY 3.0"
+                target="_blank">
+                CC 3.0 BY
+              </a>
+            </div>
+          </footer>
+        </div>
+      </Router>
     );
   }
 }

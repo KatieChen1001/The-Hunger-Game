@@ -205,7 +205,7 @@ class Questionnaire extends Component {
         );
       case 5:
         return (
-          <div>
+          <div className="resturant">
             <h1>
               Q4. The following four restaurant all sell exactly the same{" "}
               {this.state.favorite}. Where would you order from?
@@ -244,7 +244,9 @@ class Questionnaire extends Component {
               Your tribute profile is now complete. Please get ready to enter
               the arena.
             </h1>
-            <NextBtn onClick={this.switchSection} />
+            <Link to="/roundOne">
+              <NextBtn onClick={this.switchSection} />
+            </Link>
           </div>
         );
       default:
@@ -267,13 +269,13 @@ class Questionnaire extends Component {
   render() {
     return (
       <div>
+        {this.renderSwitch(this.state.stage)}
         <Progress
           QuestionNum={this.state.stage}
           previousSection="/"
           nextSection="/roundOne"
           onClick={this.progressBarClicked}
         />
-        {this.renderSwitch(this.state.stage)}
       </div>
     );
   }

@@ -3,7 +3,8 @@
   width: 80vw;
   height: 50px;
   position: fixed;
-  bottom: 0px;
+  bottom: 0;
+  left: -5vw;
 }
 
 .progressBar p {

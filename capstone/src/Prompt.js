@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Reveal from "react-reveal/Reveal";
 import NextBtn from "./NextBtn.js";
 import BackBtn from "./BackBtn.js";
+import Progress from "./Progress.js";
+import { Link } from "react-router-dom";
 
 import "./animate.css";
 
@@ -77,7 +79,9 @@ class Prompt extends Component {
             </p>
             <div>
               <BackBtn onClick={this.onPrevious} />
-              <NextBtn onClick={this.switchSection} />
+              <Link to="/profile">
+                <NextBtn onClick={this.switchSection} />{" "}
+              </Link>
             </div>
           </Reveal>
         );
@@ -107,6 +111,7 @@ class Prompt extends Component {
                 Starvation. The only way to sustain yourself on Planet
                 Starvation is to participate in its annual Hunger Game.
               </p>
+
               <NextBtn onClick={this.onNext} />
             </div>
           </Reveal>
@@ -115,7 +120,17 @@ class Prompt extends Component {
   }
 
   render() {
-    return <div>{this.renderSwitch(this.state.stage)}</div>;
+    return (
+      <div>
+        {this.renderSwitch(this.state.stage)}
+        <Progress
+          QuestionNum={this.state.stage}
+          previousSection="/"
+          nextSection="/profile"
+          onClick={this.progressBarClicked}
+        />
+      </div>
+    );
   }
 }
 

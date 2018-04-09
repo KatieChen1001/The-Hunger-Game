@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ImgQuestion from "./ImgQuestion.js";
 import "./Report.css";
+import { Link } from "react-router-dom";
 
 class Report extends Component {
   render() {
@@ -27,6 +28,7 @@ class Report extends Component {
 
     const lookUpOrderFreq = {
       fanatic: {
+        // order frequency in the number of orders per day: 1,
         avg: "7 times above average"
       },
       pro: {
@@ -146,6 +148,9 @@ class Report extends Component {
         <h3>
           <span>10 trees were killed </span>for building your weapon{" "}
         </h3>
+        <Link to="/">
+          <p>Play Again!</p>
+        </Link>
       </div>
     );
   }

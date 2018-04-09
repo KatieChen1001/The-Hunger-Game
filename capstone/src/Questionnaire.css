@@ -32,3 +32,8 @@ span.resturant {
   display: block;
   margin-top: 0.4em;
 }
+
+.resturant {
+  overflow-y: auto;
+  flex: 1;
+}

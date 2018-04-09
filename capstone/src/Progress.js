@@ -27,6 +27,9 @@ class Progress extends Component {
     //   <ProgressBtn progressBtnName = {number}.toString() onClick ={this.buttonClicked} active = {this.props.QuestionNum === {number} || this.state.active === {number}.toString()} />
     // )
 
+    // THIS WILL COME FROM PROPS!!!!!!!
+    const numBtns = 5;
+
     return (
       <div className="progressBar">
         <Link to={this.props.previousSection}>

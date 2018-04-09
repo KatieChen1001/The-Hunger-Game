@@ -12,3 +12,7 @@
   display: inline-block;
   margin-right: 0.2em;
 }
+
+.progressBtnName-container:hover {
+  cursor: pointer;
+}
