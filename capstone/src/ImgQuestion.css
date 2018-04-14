@@ -8,12 +8,16 @@ img:hover {
   width: 70px;
 }
 
+/* small is used for report page */
 .small {
+  width: 30px;
+}
+.medium {
   width: 50px;
 }
 
 .large {
-  width: 500px;
+  width: 350px;
 }
 
 .ImgQuestionWrapper {

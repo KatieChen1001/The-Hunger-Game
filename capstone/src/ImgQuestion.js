@@ -43,7 +43,7 @@ class ImgQuestion extends Component {
 
 ImgQuestion.propTypes = {
   onClick: PropTypes.func,
-  size: PropTypes.oneOf(["small", "large"])
+  size: PropTypes.oneOf(["small", "medium", "large"])
 };
 
 export default ImgQuestion;

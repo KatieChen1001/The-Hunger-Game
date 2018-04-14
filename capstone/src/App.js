@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./App.css";
 import Prompt from "./Prompt.js";
 import Questionnaire from "./Questionnaire.js";
-import NextBtn from "./NextBtn.js";
 import RoundOne from "./RoundOne.js";
 import Report from "./Report.js";
 import { BrowserRouter as Router, Route } from "react-router-dom";

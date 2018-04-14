@@ -187,7 +187,9 @@ class Questionnaire extends Component {
               description="greedy"
               size="small"
             />
-            <NextBtn onClick={this.onNext} />
+            <div>
+              <NextBtn onClick={this.onNext} />
+            </div>
           </div>
         );
       case 4:
@@ -205,35 +207,37 @@ class Questionnaire extends Component {
         );
       case 5:
         return (
-          <div className="resturant">
+          <div>
             <h1>
               Q4. The following four restaurant all sell exactly the same{" "}
               {this.state.favorite}. Where would you order from?
             </h1>
-            <ImgQuestion
-              label="restaurant/cheap"
-              name="resturant"
-              onClick={this.handleImgQuestionChange}
-              size="large"
-            />
-            <ImgQuestion
-              label="restaurant/corner"
-              name="resturant"
-              onClick={this.handleImgQuestionChange}
-              size="large"
-            />
-            <ImgQuestion
-              label="restaurant/green"
-              name="resturant"
-              onClick={this.handleImgQuestionChange}
-              size="large"
-            />
-            <ImgQuestion
-              label="restaurant/fancy"
-              name="resturant"
-              onClick={this.handleImgQuestionChange}
-              size="large"
-            />
+            <div className="restaurantImgWrapper">
+              <ImgQuestion
+                label="restaurant/cheap"
+                name="resturant"
+                onClick={this.handleImgQuestionChange}
+                size="large"
+              />
+              <ImgQuestion
+                label="restaurant/corner"
+                name="resturant"
+                onClick={this.handleImgQuestionChange}
+                size="large"
+              />
+              <ImgQuestion
+                label="restaurant/green"
+                name="resturant"
+                onClick={this.handleImgQuestionChange}
+                size="large"
+              />
+              <ImgQuestion
+                label="restaurant/fancy"
+                name="resturant"
+                onClick={this.handleImgQuestionChange}
+                size="large"
+              />
+            </div>
             <NextBtn onClick={this.onNext} />
           </div>
         );
@@ -268,13 +272,15 @@ class Questionnaire extends Component {
 
   render() {
     return (
-      <div>
+      <div className="margin-top">
         {this.renderSwitch(this.state.stage)}
         <Progress
           QuestionNum={this.state.stage}
           previousSection="/"
           nextSection="/roundOne"
           onClick={this.progressBarClicked}
+          numOfSubsections={7}
+          preName="Pre"
         />
       </div>
     );

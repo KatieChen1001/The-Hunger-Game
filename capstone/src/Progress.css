@@ -1,10 +1,11 @@
 .progressBar {
-  background-color: #333;
-  width: 80vw;
+  /* background-color: #333; */
+  /* width: 80vw; */
+  margin-top: 2em;
   height: 50px;
-  position: fixed;
-  bottom: 0;
-  left: -5vw;
+  /* position: fixed; */
+  /* bottom: 0; */
+  /* left: -5vw; */
 }
 
 .progressBar p {

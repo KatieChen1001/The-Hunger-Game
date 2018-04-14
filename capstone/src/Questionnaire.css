@@ -33,7 +33,8 @@ span.resturant {
   margin-top: 0.4em;
 }
 
-.resturant {
-  overflow-y: auto;
-  flex: 1;
+.restaurantImgWrapper {
+  width: 70vw;
+  display: flex;
+  flex-wrap: wrap;
 }

@@ -18,9 +18,18 @@ class Prompt extends Component {
     this.unqualified = this.unqualified.bind(this);
     this.onPrevious = this.onPrevious.bind(this);
 
+    this.progressBarClicked = this.progressBarClicked.bind(this);
+
     this.state = {
       stage: 0
     };
+  }
+
+  progressBarClicked(stageNum) {
+    this.setState({
+      stage: stageNum
+    });
+    this.renderSwitch(stageNum);
   }
 
   onNext() {
@@ -78,7 +87,6 @@ class Prompt extends Component {
               build your tribute profile.
             </p>
             <div>
-              <BackBtn onClick={this.onPrevious} />
               <Link to="/profile">
                 <NextBtn onClick={this.switchSection} />{" "}
               </Link>
@@ -94,6 +102,7 @@ class Prompt extends Component {
                 src="http://localhost:3000/assets/sad.svg"
                 width="30px"
                 align="middle"
+                alt="default sad face"
               />
             </h1>
             <p>Please go explore other capstone projects at the final show</p>
@@ -121,13 +130,15 @@ class Prompt extends Component {
 
   render() {
     return (
-      <div>
+      <div className="margin-top">
         {this.renderSwitch(this.state.stage)}
         <Progress
           QuestionNum={this.state.stage}
           previousSection="/"
           nextSection="/profile"
           onClick={this.progressBarClicked}
+          numOfSubsections={3}
+          preName=""
         />
       </div>
     );

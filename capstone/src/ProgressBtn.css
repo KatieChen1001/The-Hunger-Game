@@ -1,8 +1,8 @@
 .active {
-  fill: white;
+  fill: #929090;
 }
 .inactive {
-  fill: black;
+  fill: #717171;
 }
 
 .progressBtnName-span {

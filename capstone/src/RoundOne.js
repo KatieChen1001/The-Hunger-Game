@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-// import Reveal from "react-reveal/Reveal";
 import NextBtn from "./NextBtn.js";
 import ImgQuestion from "./ImgQuestion.js";
 import "./RoundOne.css";
+import Progress from "./Progress.js";
 import { Link } from "react-router-dom";
 
 class RoundOne extends Component {
@@ -14,6 +14,8 @@ class RoundOne extends Component {
     this.renderSwitch = this.renderSwitch.bind(this);
     this.switchSection = this.switchSection.bind(this);
 
+    this.progressBarClicked = this.progressBarClicked.bind(this);
+
     this.state = {
       stage: 0,
       foodGrabbed: "",
@@ -21,6 +23,13 @@ class RoundOne extends Component {
       shield: "",
       dataInApp: "roundOne"
     };
+  }
+
+  progressBarClicked(stageNum) {
+    this.setState({
+      stage: stageNum
+    });
+    this.renderSwitch(stageNum);
   }
 
   onNext() {
@@ -202,7 +211,19 @@ class RoundOne extends Component {
   }
 
   render() {
-    return <div>{this.renderSwitch(this.state.stage)}</div>;
+    return (
+      <div>
+        {this.renderSwitch(this.state.stage)}
+        <Progress
+          QuestionNum={this.state.stage}
+          previousSection="/profile"
+          nextSection="/hungerReport"
+          onClick={this.progressBarClicked}
+          numOfSubsections={5}
+          preName="Prev"
+        />
+      </div>
+    );
   }
 }
 
