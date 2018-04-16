@@ -5,9 +5,23 @@ import { Link } from "react-router-dom";
 
 class Report extends Component {
   render() {
-    const q = this.props.questionnaireData;
-    const one = this.props.roundOneData;
+    // const q = this.props.questionnaireData;
+    // const one = this.props.roundOneData;
 
+    const q = {
+      foodieAlias: "Katie",
+      ninja: "ninja/fierceGirl",
+      waimai: "fanatic",
+      emoji: "emoji/greedy",
+      favorite: "pizza",
+      restaurant: "restaurant/cheap"
+    };
+
+    const one = {
+      foodGrabbed: "grab/rice",
+      sword: "pack/sword/plastic",
+      shield: "pack/shield/paper"
+    };
     const lookUpEmoji = {
       "emoji/angry": {
         hungerLevel: "high enough to eat the fridge",
@@ -116,6 +130,24 @@ class Report extends Component {
       }
     };
 
+    const lookUpShield = {
+      "pack/sword/chopsticks": {
+        name: "Kung Fu Chopsticks",
+        pollutionType: "wood",
+        imgLabel: "report/shield/plastic"
+      },
+      "pack/sword/plastic": {
+        name: "Plastic Combo",
+        pollutionType: "plastic",
+        imgLabel: "report/shield/plastic"
+      },
+      "pack/sword/silverware": {
+        name: "Louis IVX Royal Silverware",
+        pollutionType: "excessive",
+        imgLabel: "report/shield/plastic"
+      }
+    };
+
     let hungerLevel,
       tendTo,
       orderFreq,
@@ -147,9 +179,9 @@ class Report extends Component {
     orderFreq = lookUpWaimai[q.waimai].orderFreq;
 
     // === content based on resturant choice === //
-    factor = lookUpRestaurant[q.resturant].factor;
-    assumption = lookUpRestaurant[q.resturant].asump;
-    restaurantName = lookUpRestaurant[q.resturant].name;
+    factor = lookUpRestaurant[q.restaurant].factor;
+    assumption = lookUpRestaurant[q.restaurant].asump;
+    restaurantName = lookUpRestaurant[q.restaurant].name;
 
     // === content based on food grabbed choice === //
     foodGrabbedName = lookUpFoodGrabbed[one.foodGrabbed].name;
@@ -162,11 +194,26 @@ class Report extends Component {
 
     let text, number;
 
+    number = lookUpWaimai[q.waimai].OrderPerDay;
+
     if (pollutionType === "plastic") {
-      number = 30 * lookUpWaimai[q.waimai].OrderPerDay;
       text =
         "10 plastic bags when accumulated and ingested could take a shark’s life. In the past 30 days, you probably “eaten”: " +
-        "30 * " + {lookUpWaimai[q.waimai].OrderPerDay} + " = " + {number};
+        "30 * " +
+        number +
+        " order per day" +
+        " = " +
+        30 * number +
+        " sharks";
+    } else if (pollutionType === "wood") {
+      text =
+        "“14 million trees are cut to produce the 10 billion paper grocery bags used by Americans each year, which equates to 0.0014 tree / bag, meaning that in the past week you have consumed " +
+        "7 * " +
+        number +
+        " order per day" +
+        " = " +
+        7 * number +
+        " Christmas Tree";
     }
 
     // }
@@ -194,28 +241,55 @@ class Report extends Component {
           Congratualtions, <span>{q.foodieAlias}</span>!
         </p>
         <div className="ninja-profile">
-          <ImgQuestion label="ninja/fierceGirl" size="large" />
+          <ImgQuestion label="ninja/fierceGirl" size="profile" />
         </div>
+        <br />
         <p>
           You are a waimai{" "}
           <ImgQuestion label="report/waimai/badge/badge" size="medium" />. An
           average Chinese consumer order delivery about <span>1</span> time
           every week, making your order frequency <span>{orderFreq}</span>.
-          <ImgQuestion label={q.emoji} size = "medium"/> is your foodie face. Your hunger level
-          is <span>{hungerLevel}</span>. You tend to <span>{tendTo}</span>. Your
-          choice of restaurant was <span>{restaurantName}</span>
-          <ImgQuestion label={q.resturant} size="large" />
+        </p>
+        <br />
+        <p>
+          <ImgQuestion label={q.emoji} size="medium" /> is your foodie face.
+          Your hunger level is <span>{hungerLevel}</span>. You tend to{" "}
+          <span>{tendTo}</span>.{" "}
+        </p>
+        <br />
+        <p>
+          Your choice of restaurant was <span>{restaurantName}</span>
+          <div>
+            <ImgQuestion label={q.restaurant} size="large" />
+          </div>
           <span>{factor}</span> might be an important factor when you order
           online. You are probably <span>{assumption}</span>
+        </p>
+        <br />
+        <p>
           The food you grabbed was <span>{foodGrabbedName}</span>.
-          <ImgQuestion label={one.foodGrabbed} size = "medium"/>
+        </p>
+        <div>
+          <ImgQuestion label={one.foodGrabbed} size="medium" />
+        </div>
+        <p>
           It was the top <span>{topFavourite}</span> favourite of Chinese
           consumers in 2017.
-          <ImgQuestion label="report/topFavChart" size= "large"/>
-          Your choice of <span className = "strike-through">sword </span> <span>{swordName}</span> was:
-          <ImgQuestion label={swordPollution} size = "large"/>
-          <ImgQuestion label={one.shield} />
         </p>
+
+        <div>
+          <ImgQuestion label="report/topFavChart" size="large" />
+        </div>
+        <p>
+          Your choice of <span className="strike-through">sword </span> cutlery
+          was: <span>{swordName}</span>
+        </p>
+        <div>
+          <ImgQuestion label={swordPollution} size="large" />
+        </div>
+        <p>{text}</p>
+        <ImgQuestion label={one.shield} />
+
         <Link to="/">
           <p>Play Again!</p>
         </Link>

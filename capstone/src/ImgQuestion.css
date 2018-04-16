@@ -20,6 +20,10 @@ img:hover {
   width: 350px;
 }
 
+.profile {
+  width: 150px;
+}
+
 .ImgQuestionWrapper {
   display: inline-block;
   margin: 1em;

@@ -18,7 +18,6 @@ class App extends Component {
         stage: "",
         foodieAlias: "",
         ninja: "",
-        orderFrequency: "",
         waimai: "",
         emoji: "",
         favorite: "",
