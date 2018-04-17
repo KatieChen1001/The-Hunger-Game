@@ -139,7 +139,7 @@ class Report extends Component {
       "pack/sword/plastic": {
         name: "Plastic Combo",
         pollutionType: "plastic",
-        imgLabel: "report/shield/plastic"
+        imgLabel: "report/shield/wood"
       },
       "pack/sword/silverware": {
         name: "Louis IVX Royal Silverware",

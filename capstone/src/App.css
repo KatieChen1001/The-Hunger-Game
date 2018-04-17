@@ -37,10 +37,6 @@
 .margin-top {
   margin-top: 9em;
 }
-/* .progressBar {
-  position: absolute;
-  bottom: 0px;
-} */
 
 input[type="text"] {
   outline: none;
@@ -78,4 +74,15 @@ footer {
 img.NextBtn,
 img.BackBtn {
   margin: 2em 1em 1em 1em;
+}
+
+#unqualified {
+  font-size: 1em;
+  margin-top: 2em;
+  color: #333;
+  text-decoration: underline;
+}
+
+#unqualified:hover {
+  cursor: pointer;
 }

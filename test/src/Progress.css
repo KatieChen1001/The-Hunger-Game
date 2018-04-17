@@ -1,0 +1,17 @@
+footer {
+  height: 100px;
+  background-color: #333;
+  padding: 2em 10em 2em 10em;
+}
+
+svg {
+  display: inline-block;
+}
+
+circle {
+  fill: #fff;
+}
+
+circle.active {
+  fill: #000;
+}

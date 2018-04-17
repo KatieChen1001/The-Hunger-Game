@@ -3,8 +3,6 @@ import "./Questionnaire.css";
 import NextBtn from "./NextBtn.js";
 import BackBtn from "./BackBtn.js";
 import ImgQuestion from "./ImgQuestion.js";
-import Progress from "./Progress.js";
-import { Link } from "react-router-dom";
 
 class Questionnaire extends Component {
   constructor(props) {
@@ -17,8 +15,6 @@ class Questionnaire extends Component {
     this.renderSwitch = this.renderSwitch.bind(this);
     this.switchSection = this.switchSection.bind(this);
 
-    this.progressBarClicked = this.progressBarClicked.bind(this);
-
     this.state = {
       stage: 0,
       foodieAlias: "",
@@ -27,24 +23,10 @@ class Questionnaire extends Component {
       emoji: "",
       favorite: "",
       restaurant: "",
-      mask: "",
       dataInApp: "questionnaire"
     };
   }
 
-  // =========================== //
-  // ***** Progress Bar ****** //
-  // =========================== //
-  progressBarClicked(stageNum) {
-    this.setState({
-      stage: stageNum
-    });
-    this.renderSwitch(stageNum);
-  }
-
-  // =========================== //
-  // ***** Handling user input changes ****** //
-  // =========================== //
   handleInputChange(e) {
     let name = e.target.name;
     let value = e.target.value;
@@ -52,6 +34,7 @@ class Questionnaire extends Component {
       [name]: value
     });
   }
+
   handleImgQuestionChange(name, imgURL) {
     this.setState({
       [name]: imgURL
@@ -188,9 +171,7 @@ class Questionnaire extends Component {
               description="greedy"
               size="small"
             />
-            <div>
-              <NextBtn onClick={this.onNext} />
-            </div>
+            <NextBtn onClick={this.onNext} />
           </div>
         );
       case 4:
@@ -213,32 +194,30 @@ class Questionnaire extends Component {
               Q4. The following four restaurant all sell exactly the same{" "}
               {this.state.favorite}. Where would you order from?
             </h1>
-            <div className="restaurantImgWrapper">
-              <ImgQuestion
-                label="restaurant/cheap"
-                name="resturant"
-                onClick={this.handleImgQuestionChange}
-                size="large"
-              />
-              <ImgQuestion
-                label="restaurant/corner"
-                name="resturant"
-                onClick={this.handleImgQuestionChange}
-                size="large"
-              />
-              <ImgQuestion
-                label="restaurant/green"
-                name="resturant"
-                onClick={this.handleImgQuestionChange}
-                size="large"
-              />
-              <ImgQuestion
-                label="restaurant/fancy"
-                name="resturant"
-                onClick={this.handleImgQuestionChange}
-                size="large"
-              />
-            </div>
+            <ImgQuestion
+              label="restaurant/cheap"
+              name="resturant"
+              onClick={this.handleImgQuestionChange}
+              size="large"
+            />
+            <ImgQuestion
+              label="restaurant/corner"
+              name="resturant"
+              onClick={this.handleImgQuestionChange}
+              size="large"
+            />
+            <ImgQuestion
+              label="restaurant/green"
+              name="resturant"
+              onClick={this.handleImgQuestionChange}
+              size="large"
+            />
+            <ImgQuestion
+              label="restaurant/fancy"
+              name="resturant"
+              onClick={this.handleImgQuestionChange}
+              size="large"
+            />
             <NextBtn onClick={this.onNext} />
           </div>
         );
@@ -249,9 +228,7 @@ class Questionnaire extends Component {
               Your tribute profile is now complete. Please get ready to enter
               the arena.
             </h1>
-            <Link to="/roundOne">
-              <NextBtn onClick={this.switchSection} />
-            </Link>
+            <NextBtn onClick={this.switchSection} />
           </div>
         );
       default:
@@ -272,19 +249,7 @@ class Questionnaire extends Component {
   }
 
   render() {
-    return (
-      <div className="margin-top">
-        {this.renderSwitch(this.state.stage)}
-        <Progress
-          QuestionNum={this.state.stage}
-          previousSection="/"
-          nextSection="/roundOne"
-          onClick={this.progressBarClicked}
-          numOfSubsections={7}
-          preName="Pre"
-        />
-      </div>
-    );
+    return <div>{this.renderSwitch(this.state.stage)}</div>;
   }
 }
 

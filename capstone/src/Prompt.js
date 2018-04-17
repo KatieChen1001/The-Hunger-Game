@@ -66,21 +66,28 @@ class Prompt extends Component {
     switch (params) {
       case 1:
         return (
-          <Reveal effect="fadeInUp">
-            <div>
-              <p>
-                To determine your eligibility, please answer the following
-                question: Have you used eleme or any other online food delivery
-                services before?
-              </p>
-              <button onClick={this.onNext}>Yes</button>
-              <button onClick={this.unqualified}>No</button>
-            </div>
-          </Reveal>
+          <div>
+            <p>
+              To determine your eligibility, please answer the following
+              question: Have you used eleme or any other online food delivery
+              services before?
+            </p>
+            <button onClick={this.onNext}>Yes</button>
+            <button onClick={this.unqualified}>No</button>
+
+            <Progress
+              QuestionNum={this.state.stage}
+              previousSection="/"
+              nextSection="/profile"
+              onClick={this.progressBarClicked}
+              numOfSubsections={3}
+              preName=""
+            />
+          </div>
         );
       case 2:
         return (
-          <Reveal effect="fadeInUp">
+          <div>
             <p>
               Alas! There is still food left for you! Before you are sent off to
               fight for it, please answer the following questions in order to
@@ -91,11 +98,19 @@ class Prompt extends Component {
                 <NextBtn onClick={this.switchSection} />{" "}
               </Link>
             </div>
-          </Reveal>
+            <Progress
+              QuestionNum={this.state.stage}
+              previousSection="/"
+              nextSection="/profile"
+              onClick={this.progressBarClicked}
+              numOfSubsections={3}
+              preName=""
+            />
+          </div>
         );
       case 3:
         return (
-          <Reveal effect="fadeInUp">
+          <div>
             <h1>
               You are UNQUALIFIED for the game{" "}
               <img
@@ -106,41 +121,40 @@ class Prompt extends Component {
               />
             </h1>
             <p>Please go explore other capstone projects at the final show</p>
-            <BackBtn onClick={this.onPrevious} />
-            <span>Back to Home</span>
-          </Reveal>
+
+            <p id="unqualified" onClick={this.onPrevious}>
+              Try Again
+            </p>
+          </div>
         );
       default:
         return (
-          <Reveal effect="fadeInUp">
-            <div>
-              <h1>Welcome to The Hunger Game</h1>
-              <p>
-                You wake up from a food coma and realize that you are on Planet
-                Starvation. The only way to sustain yourself on Planet
-                Starvation is to participate in its annual Hunger Game.
-              </p>
+          <div>
+            <h1>Welcome to The Hunger Game</h1>
+            <p>
+              You wake up from a food coma and realize that you are on Planet
+              Starvation. The only way to sustain yourself on Planet Starvation
+              is to participate in its annual Hunger Game.
+            </p>
 
-              <NextBtn onClick={this.onNext} />
-            </div>
-          </Reveal>
+            <NextBtn onClick={this.onNext} />
+
+            <Progress
+              QuestionNum={this.state.stage}
+              previousSection="/"
+              nextSection="/profile"
+              onClick={this.progressBarClicked}
+              numOfSubsections={3}
+              preName=""
+            />
+          </div>
         );
     }
   }
 
   render() {
     return (
-      <div className="margin-top">
-        {this.renderSwitch(this.state.stage)}
-        <Progress
-          QuestionNum={this.state.stage}
-          previousSection="/"
-          nextSection="/profile"
-          onClick={this.progressBarClicked}
-          numOfSubsections={3}
-          preName=""
-        />
-      </div>
+      <div className="margin-top">{this.renderSwitch(this.state.stage)}</div>
     );
   }
 }
