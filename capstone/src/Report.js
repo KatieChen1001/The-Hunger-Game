@@ -20,7 +20,7 @@ class Report extends Component {
     const one = {
       foodGrabbed: "grab/rice",
       sword: "pack/sword/plastic",
-      shield: "pack/shield/paper"
+      shield: "pack/shield/foil"
     };
     const lookUpEmoji = {
       "emoji/angry": {
@@ -131,20 +131,20 @@ class Report extends Component {
     };
 
     const lookUpShield = {
-      "pack/sword/chopsticks": {
-        name: "Kung Fu Chopsticks",
-        pollutionType: "wood",
-        imgLabel: "report/shield/plastic"
-      },
-      "pack/sword/plastic": {
-        name: "Plastic Combo",
+      "pack/shield/plastic": {
+        name: "Poisonous Plastic",
         pollutionType: "plastic",
-        imgLabel: "report/shield/wood"
-      },
-      "pack/sword/silverware": {
-        name: "Louis IVX Royal Silverware",
-        pollutionType: "excessive",
         imgLabel: "report/shield/plastic"
+      },
+      "pack/shield/paper": {
+        name: "Paper Thin",
+        pollutionType: "wood",
+        imgLabel: "report/shield/paper"
+      },
+      "pack/shield/foil": {
+        name: "Aluminum-Foil All Proof",
+        pollutionType: "aluminum",
+        imgLabel: "report/shield/foil"
       }
     };
 
@@ -157,8 +157,11 @@ class Report extends Component {
       foodGrabbedName,
       topFavourite,
       swordName,
-      pollutionType,
-      swordPollution;
+      swordPollutionType,
+      swordPollution,
+      shieldName,
+      shieldPollutionType,
+      shieldPollution;
 
     // if (
     //   !lookUpEmoji[q.emoji] ||
@@ -189,14 +192,19 @@ class Report extends Component {
 
     // === pollution of utensils === //
     swordName = lookUpSword[one.sword].name;
-    pollutionType = lookUpSword[one.sword].pollutionType;
+    swordPollutionType = lookUpSword[one.sword].pollutionType;
     swordPollution = lookUpSword[one.sword].imgLabel;
+
+    // === pollution of containers === //
+    shieldName = lookUpShield[one.shield].name;
+    shieldPollutionType = lookUpShield[one.shield].pollutionType;
+    shieldPollution = lookUpShield[one.shield].imgLabel;
 
     let text, number;
 
     number = lookUpWaimai[q.waimai].OrderPerDay;
 
-    if (pollutionType === "plastic") {
+    if (shieldPollutionType === "plastic") {
       text =
         "10 plastic bags when accumulated and ingested could take a shark’s life. In the past 30 days, you probably “eaten”: " +
         "30 * " +
@@ -205,7 +213,7 @@ class Report extends Component {
         " = " +
         30 * number +
         " sharks";
-    } else if (pollutionType === "wood") {
+    } else if (shieldPollutionType === "wood") {
       text =
         "“14 million trees are cut to produce the 10 billion paper grocery bags used by Americans each year, which equates to 0.0014 tree / bag, meaning that in the past week you have consumed " +
         "7 * " +
@@ -214,8 +222,17 @@ class Report extends Component {
         " = " +
         7 * number +
         " Christmas Tree";
+    } else if (shieldPollutionType === "aluminum") {
+      text =
+        "Last week your total order was " +
+        number * 7 +
+        "; Every package requires 3g of aluminum foil, to produce all the packaging needed for your food requires " +
+        number * 7 * 3 * 170 * 1055 +
+        "J" +
+        ", which equals to you running for " +
+        number * 7 * 3 * 170 * 1055 / 530000 * 30 / 60 +
+        " h";
     }
-
     // }
 
     // if (!q.foodieAlias) {
@@ -233,6 +250,8 @@ class Report extends Component {
     // if (!q.resturant) {
     //   q.resturant = "sad";
     // }
+
+    console.log(text);
 
     return (
       <div className="margin-top report">
@@ -259,12 +278,15 @@ class Report extends Component {
         <br />
         <p>
           Your choice of restaurant was <span>{restaurantName}</span>
-          <div>
-            <ImgQuestion label={q.restaurant} size="large" />
-          </div>
+        </p>
+        <div>
+          <ImgQuestion label={q.restaurant} size="large" />
+        </div>
+        <p>
           <span>{factor}</span> might be an important factor when you order
           online. You are probably <span>{assumption}</span>
         </p>
+
         <br />
         <p>
           The food you grabbed was <span>{foodGrabbedName}</span>.
@@ -281,15 +303,20 @@ class Report extends Component {
           <ImgQuestion label="report/topFavChart" size="large" />
         </div>
         <p>
-          Your choice of <span className="strike-through">sword </span> cutlery
+          Your choice of <span className="strike-through">sword</span> cutlery
           was: <span>{swordName}</span>
         </p>
         <div>
           <ImgQuestion label={swordPollution} size="large" />
         </div>
+        <p>
+          Your choice of <span className="strike-through">shield</span> food
+          container was: <span>{shieldName}</span>
+        </p>
         <p>{text}</p>
-        <ImgQuestion label={one.shield} />
-
+        <div>
+          <ImgQuestion label={shieldPollution} size="large" />
+        </div>
         <Link to="/">
           <p>Play Again!</p>
         </Link>

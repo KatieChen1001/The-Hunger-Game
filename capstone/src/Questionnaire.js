@@ -18,6 +18,7 @@ class Questionnaire extends Component {
     this.switchSection = this.switchSection.bind(this);
 
     this.progressBarClicked = this.progressBarClicked.bind(this);
+    this.noStressEat = this.noStressEat.bind(this);
 
     this.state = {
       stage: 0,
@@ -45,6 +46,14 @@ class Questionnaire extends Component {
   // =========================== //
   // ***** Handling user input changes ****** //
   // =========================== //
+
+  noStressEat() {
+    this.setState({
+      favorite: "Cheese Cake"
+    });
+    this.onNext();
+  }
+
   handleInputChange(e) {
     let name = e.target.name;
     let value = e.target.value;
@@ -54,7 +63,8 @@ class Questionnaire extends Component {
   }
   handleImgQuestionChange(name, imgURL) {
     this.setState({
-      [name]: imgURL
+      [name]: imgURL,
+      mask: imgURL
     });
   }
 
@@ -87,24 +97,28 @@ class Questionnaire extends Component {
             <p>Please choose your foodie ninja avatar</p>
             <ImgQuestion
               label="ninja/fierceGirl"
+              active={this.state.mask === "ninja/fierceGirl"}
               name="emoji"
               onClick={this.handleImgQuestionChange}
               description="Katniss Everdeen"
             />
             <ImgQuestion
               label="ninja/smileyGirl"
+              active={this.state.mask === "ninja/smileyGirl"}
               name="emoji"
               onClick={this.handleImgQuestionChange}
               description="Primrose Everdeen"
             />
             <ImgQuestion
               label="ninja/smileyBoy"
+              active={this.state.mask === "ninja/smileyBoy"}
               name="emoji"
               onClick={this.handleImgQuestionChange}
               description="Gale Hawthorne"
             />
             <ImgQuestion
               label="ninja/starvingBoy"
+              active={this.state.mask === "ninja/starvingBoy"}
               name="emoji"
               onClick={this.handleImgQuestionChange}
               description="Peeta Mellark"
@@ -162,6 +176,7 @@ class Questionnaire extends Component {
             </h1>
             <ImgQuestion
               label="emoji/angry"
+              active={this.state.mask === "emoji/angry"}
               onClick={this.handleImgQuestionChange}
               name="emoji"
               description="hangry"
@@ -169,6 +184,7 @@ class Questionnaire extends Component {
             />
             <ImgQuestion
               label="emoji/impatient"
+              active={this.state.mask === "emoji/impatient"}
               onClick={this.handleImgQuestionChange}
               name="emoji"
               description="can't wait"
@@ -176,6 +192,7 @@ class Questionnaire extends Component {
             />
             <ImgQuestion
               label="emoji/drooling"
+              active={this.state.mask === "emoji/drooling"}
               onClick={this.handleImgQuestionChange}
               name="emoji"
               description="drooling"
@@ -183,6 +200,7 @@ class Questionnaire extends Component {
             />
             <ImgQuestion
               label="emoji/greedy"
+              active={this.state.mask === "emoji/greedy"}
               onClick={this.handleImgQuestionChange}
               name="emoji"
               description="greedy"
@@ -202,7 +220,9 @@ class Questionnaire extends Component {
               name="favorite"
               onChange={this.handleInputChange}
             />
-            <p>Nope I do not stress eat</p>
+            <button id="noStressEatBtn" onClick={this.noStressEat}>
+              Nope I do not stress eat
+            </button>
             <NextBtn onClick={this.onNext} />
           </div>
         );
@@ -211,29 +231,34 @@ class Questionnaire extends Component {
           <div>
             <h1>
               Q4. The following four restaurant all sell exactly the same{" "}
-              {this.state.favorite}. Where would you order from?
+              <span id="userFav">{this.state.favorite}</span>. Where would you
+              order from?
             </h1>
             <div className="restaurantImgWrapper">
               <ImgQuestion
                 label="restaurant/cheap"
+                active={this.state.mask === "restaurant/cheap"}
                 name="resturant"
                 onClick={this.handleImgQuestionChange}
                 size="large"
               />
               <ImgQuestion
                 label="restaurant/corner"
+                active={this.state.mask === "restaurant/corner"}
                 name="resturant"
                 onClick={this.handleImgQuestionChange}
                 size="large"
               />
               <ImgQuestion
                 label="restaurant/green"
+                active={this.state.mask === "restaurant/green"}
                 name="resturant"
                 onClick={this.handleImgQuestionChange}
                 size="large"
               />
               <ImgQuestion
                 label="restaurant/fancy"
+                active={this.state.mask === "restaurant/fancy"}
                 name="resturant"
                 onClick={this.handleImgQuestionChange}
                 size="large"

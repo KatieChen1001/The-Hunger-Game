@@ -12,12 +12,13 @@ img:hover {
 .small {
   width: 30px;
 }
+
 .medium {
   width: 50px;
 }
 
 .large {
-  width: 350px;
+  width: 500px;
 }
 
 .profile {
@@ -26,23 +27,21 @@ img:hover {
 
 .ImgQuestionWrapper {
   display: inline-block;
-  margin: 1em;
+  margin: 0.5em;
 }
 
-p {
-  display: block;
-  margin: 0px 10px;
+.ImgQuestionWrapper:hover {
+  cursor: pointer;
 }
+
+.ImgQuestionWrapper span {
+  display: block;
+}
+
 .active {
   opacity: 0.2;
 }
 
 .inactive {
   opacity: 1;
-}
-
-span {
-  color: #575757;
-  font-size: 14px;
-  display: block;
 }

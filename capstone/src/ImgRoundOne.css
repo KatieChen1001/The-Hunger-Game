@@ -1,0 +1,34 @@
+.iconWrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ImgRoundOneWrapper {
+  width: 200px;
+  height: 170px;
+  padding: 1em;
+  margin: 0 0.5em;
+}
+
+.ImgRoundOneWrapper:hover {
+  cursor: pointer;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 0.3em;
+}
+
+.ImgRoundOneWrapper span {
+  display: block;
+}
+
+.ImgRoundOneWrapper.weaponCardActive {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 0.3em;
+}
+
+.bonus {
+  color: #636363;
+  margin-top: 0.8em;
+  font-size: 0.9em;
+}

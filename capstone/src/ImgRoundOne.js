@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import "./ImgQuestion.css";
+import "./ImgRoundOne.css";
 
-class ImgQuestion extends Component {
+class ImgRoundOne extends Component {
   constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);
@@ -14,30 +13,26 @@ class ImgQuestion extends Component {
 
   render() {
     const { size, onClick } = this.props;
-
-    let activeImg = this.props.active ? "active" : "inactive";
+    let activeWeaponCard = this.props.activeWeaponCard
+      ? "weaponCardActive"
+      : " ";
     let imgClasses = "svgImg";
-
     if (size) imgClasses += " " + size;
-    if (activeImg) imgClasses += " " + activeImg;
+    let classes = "ImgRoundOneWrapper";
+    if (activeWeaponCard) classes += " " + activeWeaponCard;
 
     return (
-      <div className="ImgQuestionWrapper" onClick={this.onClick}>
+      <div className={classes} onClick={this.onClick}>
         <img
           className={imgClasses}
           src={"http://localhost:3000/assets/" + this.props.label + ".svg"}
           alt={this.props.name}
         />
         <span className={this.props.name}>{this.props.description}</span>
-        <p>{this.props.bonus}</p>
+        <span className="bonus">{this.props.bonus}</span>
       </div>
     );
   }
 }
 
-ImgQuestion.propTypes = {
-  onClick: PropTypes.func,
-  size: PropTypes.oneOf(["small", "medium", "large", "profile"])
-};
-
-export default ImgQuestion;
+export default ImgRoundOne;
