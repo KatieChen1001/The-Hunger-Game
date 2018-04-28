@@ -4,6 +4,7 @@ import Prompt from "./Prompt.js";
 import Questionnaire from "./Questionnaire.js";
 import RoundOne from "./RoundOne.js";
 import Report from "./Report.js";
+import TakeAction from "./TakeAction";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class App extends Component {
@@ -107,6 +108,12 @@ class App extends Component {
                     roundOneData={this.state.roundOne}
                   />
                 );
+              }}
+            />
+            <Route
+              path="/takeAction"
+              component={props => {
+                return <TakeAction />;
               }}
             />
           </div>

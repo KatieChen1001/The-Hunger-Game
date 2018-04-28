@@ -17,12 +17,16 @@ img:hover {
   width: 50px;
 }
 
-.large {
-  width: 500px;
-}
-
 .profile {
   width: 150px;
+}
+
+.medium-large {
+  width: 400px;
+}
+
+.large {
+  width: 500px;
 }
 
 .ImgQuestionWrapper {

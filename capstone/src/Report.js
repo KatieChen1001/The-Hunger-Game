@@ -1,9 +1,32 @@
 import React, { Component } from "react";
 import ImgQuestion from "./ImgQuestion.js";
 import "./Report.css";
+import Prompt from "./Prompt.js";
 import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class Report extends Component {
+  constructor(props) {
+    super(props);
+    this.onPlayAgain = this.onPlayAgain.bind(this);
+    this.clickToPrint = this.clickToPrint.bind(this);
+
+    this.state = {
+      topBtnContainer: "display"
+    };
+  }
+
+  onPlayAgain() {
+    console.log("fake function");
+  }
+
+  clickToPrint() {
+    this.setState({
+      topBtnContainer: "hidden"
+    });
+    window.print();
+  }
+
   render() {
     // const q = this.props.questionnaireData;
     // const one = this.props.roundOneData;
@@ -47,22 +70,26 @@ class Report extends Component {
         // order frequency in the number of orders per day: 1,
         orderFreq: "7 times above average",
         OrderPerDay: 1,
-        badge: "report/waimai/badge/badge"
+        badge: "report/waimai/badge/fanatic",
+        bin: "report/waimai/bin/fanatic"
       },
       pro: {
         orderFreq: "3 times above average",
         OrderPerDay: 0.7,
-        badge: "report/waimai/badge/badge"
+        badge: "report/waimai/badge/pro",
+        bin: "report/waimai/bin/pro"
       },
       rookie: {
         orderFreq: "right on average with the country",
         OrderPerDay: 0.2,
-        badge: "report/waimai/badge/badge"
+        badge: "report/waimai/badge/rookie",
+        bin: "report/waimai/bin/rookie"
       },
       amateur: {
         orderFreq: "below national average",
         OrderPerDay: 0.1,
-        badge: "report/waimai/badge/badge"
+        badge: "report/waimai/badge/amateur",
+        bin: "report/waimai/bin/amateur"
       }
     };
 
@@ -116,17 +143,17 @@ class Report extends Component {
       "pack/sword/chopsticks": {
         name: "Kung Fu Chopsticks",
         pollutionType: "wood",
-        imgLabel: "report/shield/plastic"
+        imgLabel: "report/shield/paper"
       },
       "pack/sword/plastic": {
         name: "Plastic Combo",
         pollutionType: "plastic",
-        imgLabel: "report/shield/plastic"
+        imgLabel: "report/sword/plastic"
       },
       "pack/sword/silverware": {
         name: "Louis IVX Royal Silverware",
         pollutionType: "excessive",
-        imgLabel: "report/shield/plastic"
+        imgLabel: "report/sword/excessive"
       }
     };
 
@@ -151,6 +178,8 @@ class Report extends Component {
     let hungerLevel,
       tendTo,
       orderFreq,
+      badge,
+      bin,
       factor,
       assumption,
       restaurantName,
@@ -180,6 +209,8 @@ class Report extends Component {
 
     // === content based on waimai order frequency choice === //
     orderFreq = lookUpWaimai[q.waimai].orderFreq;
+    badge = lookUpWaimai[q.waimai].badge;
+    bin = lookUpWaimai[q.waimai].bin;
 
     // === content based on resturant choice === //
     factor = lookUpRestaurant[q.restaurant].factor;
@@ -223,6 +254,7 @@ class Report extends Component {
         7 * number +
         " Christmas Tree";
     } else if (shieldPollutionType === "aluminum") {
+      var runningTime = number * 7 * 3 * 170 * 1055 / 530000 * 30 / 60;
       text =
         "Last week your total order was " +
         number * 7 +
@@ -230,9 +262,11 @@ class Report extends Component {
         number * 7 * 3 * 170 * 1055 +
         "J" +
         ", which equals to you running for " +
-        number * 7 * 3 * 170 * 1055 / 530000 * 30 / 60 +
+        runningTime.toFixed(2) +
         " h";
     }
+
+    let topBtnActivity = this.state.topBtnContainer;
     // }
 
     // if (!q.foodieAlias) {
@@ -251,75 +285,97 @@ class Report extends Component {
     //   q.resturant = "sad";
     // }
 
-    console.log(text);
-
     return (
-      <div className="margin-top report">
-        <h1>THE HUNGER REPORT</h1>
-        <p>
-          Congratualtions, <span>{q.foodieAlias}</span>!
-        </p>
-        <div className="ninja-profile">
-          <ImgQuestion label="ninja/fierceGirl" size="profile" />
-        </div>
-        <br />
-        <p>
-          You are a waimai{" "}
-          <ImgQuestion label="report/waimai/badge/badge" size="medium" />. An
-          average Chinese consumer order delivery about <span>1</span> time
-          every week, making your order frequency <span>{orderFreq}</span>.
-        </p>
-        <br />
-        <p>
-          <ImgQuestion label={q.emoji} size="medium" /> is your foodie face.
-          Your hunger level is <span>{hungerLevel}</span>. You tend to{" "}
-          <span>{tendTo}</span>.{" "}
-        </p>
-        <br />
-        <p>
-          Your choice of restaurant was <span>{restaurantName}</span>
-        </p>
-        <div>
-          <ImgQuestion label={q.restaurant} size="large" />
-        </div>
-        <p>
-          <span>{factor}</span> might be an important factor when you order
-          online. You are probably <span>{assumption}</span>
-        </p>
+      <div>
+        <div className={"report-page-top-btn-container " + topBtnActivity}>
+          <Link to="/">
+            <ImgQuestion
+              label="report/again"
+              description="Play Again!"
+              name="report-page-btn"
+              size="medium"
+              onClick={this.onPlayAgain}
+            />
+          </Link>
 
-        <br />
-        <p>
-          The food you grabbed was <span>{foodGrabbedName}</span>.
-        </p>
-        <div>
-          <ImgQuestion label={one.foodGrabbed} size="medium" />
+          <ImgQuestion
+            label="report/print"
+            description="Click to Print Your Report"
+            name="report-page-btn"
+            size="medium"
+            onClick={this.clickToPrint}
+          />
         </div>
-        <p>
-          It was the top <span>{topFavourite}</span> favourite of Chinese
-          consumers in 2017.
-        </p>
+        <div className="margin-top report" id="report">
+          <div className="report-textWrapper">
+            <h1>THE HUNGER REPORT</h1>
+            <p>
+              Congratualtions, <span>{q.foodieAlias}</span>!
+            </p>
+            <div className="ninja-profile">
+              <ImgQuestion label="ninja/fierceGirl" size="profile" />
+            </div>
+            <br />
+            <p>
+              You are a waimai <ImgQuestion label={badge} />. An average Chinese
+              consumer order delivery about <span>1</span> time every week,
+              making your order frequency <span>{orderFreq}</span>.
+            </p>
+            <div>
+              <ImgQuestion label={bin} size="large" />
+            </div>
+            <br />
+            <p>
+              <ImgQuestion label={q.emoji} size="medium" /> is your foodie face.
+              Your hunger level is <span>{hungerLevel}</span>. You tend to{" "}
+              <span>{tendTo}</span>.{" "}
+            </p>
+            <br />
+            <p>
+              Your choice of restaurant was <span>{restaurantName}</span>
+            </p>
+            <div>
+              <ImgQuestion label={q.restaurant} size="medium-large" />
+            </div>
+            <p>
+              <span>{factor}</span> might be an important factor when you order
+              online. You are probably <span>{assumption}</span>
+            </p>
 
-        <div>
-          <ImgQuestion label="report/topFavChart" size="large" />
+            <br />
+            <p>
+              The food you grabbed was <span>{foodGrabbedName}</span>.{"    "}
+              <ImgQuestion label={one.foodGrabbed} size="medium" />
+            </p>
+
+            <p>
+              It was the top <span>{topFavourite}</span> favourite of Chinese
+              consumers in 2017.
+            </p>
+
+            <div>
+              <ImgQuestion label="report/topFavChart" size="large" />
+            </div>
+            <p>
+              Your choice of <span className="strike-through">sword</span>{" "}
+              cutlery was: <span>{swordName}</span>
+            </p>
+            <div>
+              <ImgQuestion label={swordPollution} size="large" />
+            </div>
+            <p>
+              Your choice of <span className="strike-through">shield</span> food
+              container was: <span>{shieldName}</span>
+            </p>
+            <p>{text}</p>
+            <div>
+              <ImgQuestion label={shieldPollution} size="large" />
+            </div>
+            <Link to="/takeAction">
+              <ImgQuestion label="report/action" onClick={this.onPlayAgain} />
+            </Link>
+          </div>
         </div>
-        <p>
-          Your choice of <span className="strike-through">sword</span> cutlery
-          was: <span>{swordName}</span>
-        </p>
-        <div>
-          <ImgQuestion label={swordPollution} size="large" />
-        </div>
-        <p>
-          Your choice of <span className="strike-through">shield</span> food
-          container was: <span>{shieldName}</span>
-        </p>
-        <p>{text}</p>
-        <div>
-          <ImgQuestion label={shieldPollution} size="large" />
-        </div>
-        <Link to="/">
-          <p>Play Again!</p>
-        </Link>
       </div>
     );
   }

@@ -1,3 +1,22 @@
+/* .report {
+  background-image: url("http://localhost:3000/assets/report/certificate150.png");
+  background-repeat: repeat-x;
+} */
+
+/* #report {
+  margin-top: 5vh;
+  width: 80vw;
+  background-image: url("http://localhost:3000/assets/report/certificate.svg");
+  background-repeat: no-repeat;
+  background-size: auto 100% contain;
+}
+
+.report-textWrapper {
+  padding: 12vh 10vw;
+  margin: 0 auto;
+  overflow-y: auto;
+}
+
 .report p {
   text-align: left;
   font-size: 1em;
@@ -32,4 +51,25 @@ span.strike-through {
 .report img:hover {
   cursor: default;
   opacity: 1;
+}
+
+span.report-page-btn {
+  font-size: 0.8em;
+}
+
+.report-page-top-btn-container {
+  margin-top: 5vh;
+}
+.report-page-top-btn-container .ImgQuestionWrapper {
+  margin-right: 50px;
+} */
+
+/* reorganized styling */
+
+.report-page-top-btn-container.display {
+  margin-top: 5vh;
+}
+
+.report-page-top-btn-container.hidden {
+  display: none;
 }

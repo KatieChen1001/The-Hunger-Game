@@ -107,8 +107,8 @@ class RoundOne extends Component {
             <h1>Pack</h1>
             <p>
               Choose ONE type of cutlery and ONE type of container. Note they
-              are don’t just protect your food; they are your sword and shield
-              as well!
+              don’t just protect your food; they are your sword and shield as
+              well!
             </p>
             <div className="iconWrapper">
               <ImgRoundOne
@@ -173,7 +173,7 @@ class RoundOne extends Component {
 
               <ImgRoundOne
                 label="pack/shield/foil"
-                activeWeaponCard={this.state.mask === "pack/shield/tinFoil"}
+                activeWeaponCard={this.state.mask === "pack/shield/foil"}
                 name="shield"
                 size="small"
                 onClick={this.handleImgQuestionChange}
