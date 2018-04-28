@@ -4,6 +4,8 @@ import Prompt from "./Prompt.js";
 import Questionnaire from "./Questionnaire.js";
 import RoundOne from "./RoundOne.js";
 import Report from "./Report.js";
+import Report2 from "./Report2.js";
+import Report3 from "./Report3.js";
 import TakeAction from "./TakeAction";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -61,15 +63,6 @@ class App extends Component {
     switch (params) {
       case 1:
         return <Questionnaire onClick={this.onClickPassState} />;
-      case 2:
-        return <RoundOne onClick={this.onClickPassState} />;
-      case 3:
-        return (
-          <Report
-            questionnaireData={this.state.questionnaire}
-            roundOneData={this.state.roundOne}
-          />
-        );
       default:
         return <Prompt onClick={this.onClick} />;
     }
@@ -100,10 +93,32 @@ class App extends Component {
               }}
             />
             <Route
-              path="/hungerReport"
+              path="/hungerReport1"
               component={props => {
                 return (
                   <Report
+                    questionnaireData={this.state.questionnaire}
+                    roundOneData={this.state.roundOne}
+                  />
+                );
+              }}
+            />
+            <Route
+              path="/hungerReport2"
+              component={props => {
+                return (
+                  <Report2
+                    questionnaireData={this.state.questionnaire}
+                    roundOneData={this.state.roundOne}
+                  />
+                );
+              }}
+            />
+            <Route
+              path="/hungerReport3"
+              component={props => {
+                return (
+                  <Report3
                     questionnaireData={this.state.questionnaire}
                     roundOneData={this.state.roundOne}
                   />

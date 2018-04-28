@@ -9,12 +9,20 @@
   background-image: url("http://localhost:3000/assets/report/certificate.svg");
   background-repeat: no-repeat;
   background-size: auto 100% contain;
+} */
+
+.report {
+  margin-top: 5vh;
 }
 
 .report-textWrapper {
-  padding: 12vh 10vw;
+  padding: 0vh 5vw;
   margin: 0 auto;
   overflow-y: auto;
+}
+
+#report2 {
+  padding: 0;
 }
 
 .report p {
@@ -33,6 +41,7 @@
 .report .ImgQuestionWrapper {
   margin: 0px;
 }
+
 .report img.svgImg {
   vertical-align: middle;
 }
@@ -53,23 +62,15 @@ span.strike-through {
   opacity: 1;
 }
 
+.report img.NextBtn:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+.report img.BackBtn:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
 span.report-page-btn {
   font-size: 0.8em;
-}
-
-.report-page-top-btn-container {
-  margin-top: 5vh;
-}
-.report-page-top-btn-container .ImgQuestionWrapper {
-  margin-right: 50px;
-} */
-
-/* reorganized styling */
-
-.report-page-top-btn-container.display {
-  margin-top: 5vh;
-}
-
-.report-page-top-btn-container.hidden {
-  display: none;
 }

@@ -216,7 +216,7 @@ class RoundOne extends Component {
         <Progress
           QuestionNum={this.state.stage}
           previousSection="/profile"
-          nextSection="/hungerReport"
+          nextSection="/hungerReport1"
           onClick={this.progressBarClicked}
           numOfSubsections={5}
           preName="Prev"
