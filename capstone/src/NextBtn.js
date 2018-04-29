@@ -14,6 +14,7 @@ class NextBtn extends Component {
   render() {
     return (
       <img
+        id="NextBtnImg"
         src="http://localhost:3000/assets/next.svg"
         onClick={this.onClick}
         width="40px"
