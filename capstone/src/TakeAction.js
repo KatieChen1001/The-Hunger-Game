@@ -18,7 +18,7 @@ class TakeAction extends Component {
     this.fakeFunction = this.fakeFunction.bind(this);
 
     this.state = {
-      stage: 4,
+      stage: 0,
       pledge: ""
     };
   }
@@ -99,7 +99,7 @@ class TakeAction extends Component {
         return (
           <div>
             <h1>Make a pledge and take a badge!</h1>
-            <p>I would like to: </p>
+            <p>I, hereby, solemnly swear: </p>
             <div className="pledge-choice-container">
               <div>
                 <input
@@ -109,8 +109,7 @@ class TakeAction extends Component {
                   onClick={this.handleInputChange}
                 />
                 <label htmlFor="800m">
-                  I will walk to any restaurant within a 800m radius, instead of
-                  ordering.
+                  I will not order from any restaurant within a 800m radius.
                 </label>
               </div>
               <div>
@@ -121,7 +120,30 @@ class TakeAction extends Component {
                   onClick={this.handleInputChange}
                 />
                 <label htmlFor="optout">
-                  I will opt-out for utensils, when I eat at home.
+                  I will opt-out for utensils when I eat at home.
+                </label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="pledge"
+                  value="optout"
+                  onClick={this.handleInputChange}
+                />
+                <label htmlFor="optout">
+                  I will try my best to avoid ordering restaurants with
+                  excessive packaging.
+                </label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="pledge"
+                  value="optout"
+                  onClick={this.handleInputChange}
+                />
+                <label htmlFor="optout">
+                  I will try my best to recycle better.
                 </label>
               </div>
             </div>
@@ -135,12 +157,18 @@ class TakeAction extends Component {
         return (
           <div>
             <h1>
-              Thank you for taking your oath! Please take a badge with your
-              pledge
+              Thank you for taking your oath! Please take a badge or a sticker
+              of your liking!
             </h1>
             <p>Bon Apetito</p>
             <Link to="/">
-              <ImgQuestion label="report/again" onClick={this.fakeFunction} />
+              <div className="playAgain">
+                <ImgQuestion
+                  label="report/again"
+                  onClick={this.fakeFunction}
+                  description="Play Again"
+                />
+              </div>
             </Link>
           </div>
         );

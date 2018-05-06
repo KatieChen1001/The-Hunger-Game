@@ -89,6 +89,7 @@ class Report extends Component {
     // === content based on waimai order frequency choice === //
     orderFreq = lookUpWaimai[q.waimai].orderFreq;
     badge = lookUpWaimai[q.waimai].badge;
+    console.log(badge);
     bin = lookUpWaimai[q.waimai].bin;
 
     return (
@@ -99,7 +100,7 @@ class Report extends Component {
             Congratualtions, <span>{q.foodieAlias}</span>!
           </p>
           <div className="ninja-profile">
-            <ImgQuestion label="ninja/fierceGirl" size="profile" />
+            <ImgQuestion label={q.ninja} size="profile" />
           </div>
           <br />
           <p>

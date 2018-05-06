@@ -62,10 +62,15 @@ class Questionnaire extends Component {
     });
   }
   handleImgQuestionChange(name, imgURL) {
-    this.setState({
-      [name]: imgURL,
-      mask: imgURL
-    });
+    this.setState(
+      {
+        [name]: imgURL,
+        mask: imgURL
+      },
+      function() {
+        console.log(this.state);
+      }
+    );
   }
 
   onNext() {
@@ -98,33 +103,32 @@ class Questionnaire extends Component {
             <ImgQuestion
               label="ninja/fierceGirl"
               active={this.state.mask === "ninja/fierceGirl"}
-              name="emoji"
               onClick={this.handleImgQuestionChange}
+              name="ninja"
               description="Katniss Everdeen"
             />
             <ImgQuestion
               label="ninja/smileyGirl"
               active={this.state.mask === "ninja/smileyGirl"}
-              name="emoji"
               onClick={this.handleImgQuestionChange}
+              name="ninja"
               description="Primrose Everdeen"
             />
             <ImgQuestion
               label="ninja/smileyBoy"
               active={this.state.mask === "ninja/smileyBoy"}
-              name="emoji"
               onClick={this.handleImgQuestionChange}
+              name="ninja"
               description="Gale Hawthorne"
             />
             <ImgQuestion
               label="ninja/starvingBoy"
               active={this.state.mask === "ninja/starvingBoy"}
-              name="emoji"
               onClick={this.handleImgQuestionChange}
+              name="ninja"
               description="Peeta Mellark"
             />
             <div>
-              <BackBtn onClick={this.onPrevious} />
               <NextBtn onClick={this.onNext} />
             </div>
           </div>
@@ -162,7 +166,6 @@ class Questionnaire extends Component {
             />
             <label htmlFor="amateur">D. 1 -3 times a month</label>
             <div>
-              <BackBtn onClick={this.onPrevious} />
               <NextBtn onClick={this.onNext} />
             </div>
           </div>
@@ -238,29 +241,29 @@ class Questionnaire extends Component {
               <ImgQuestion
                 label="restaurant/cheap"
                 active={this.state.mask === "restaurant/cheap"}
-                name="resturant"
                 onClick={this.handleImgQuestionChange}
+                name="restaurant"
                 size="large"
               />
               <ImgQuestion
                 label="restaurant/corner"
                 active={this.state.mask === "restaurant/corner"}
-                name="resturant"
                 onClick={this.handleImgQuestionChange}
+                name="restaurant"
                 size="large"
               />
               <ImgQuestion
                 label="restaurant/green"
                 active={this.state.mask === "restaurant/green"}
-                name="resturant"
                 onClick={this.handleImgQuestionChange}
+                name="restaurant"
                 size="large"
               />
               <ImgQuestion
                 label="restaurant/fancy"
                 active={this.state.mask === "restaurant/fancy"}
-                name="resturant"
                 onClick={this.handleImgQuestionChange}
+                name="restaurant"
                 size="large"
               />
             </div>
@@ -297,18 +300,16 @@ class Questionnaire extends Component {
   }
 
   render() {
+    // <Progress
+    //   QuestionNum={this.state.stage}
+    //   previousSection="/"
+    //   nextSection="/roundOne"
+    //   onClick={this.progressBarClicked}
+    //   numOfSubsections={7}
+    //   preName="Pre"
+    // />
     return (
-      <div className="margin-top">
-        {this.renderSwitch(this.state.stage)}
-        <Progress
-          QuestionNum={this.state.stage}
-          previousSection="/"
-          nextSection="/roundOne"
-          onClick={this.progressBarClicked}
-          numOfSubsections={7}
-          preName="Pre"
-        />
-      </div>
+      <div className="margin-top">{this.renderSwitch(this.state.stage)}</div>
     );
   }
 }

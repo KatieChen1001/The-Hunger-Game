@@ -74,15 +74,6 @@ class Prompt extends Component {
             </p>
             <button onClick={this.onNext}>Yes</button>
             <button onClick={this.unqualified}>No</button>
-
-            <Progress
-              QuestionNum={this.state.stage}
-              previousSection="/"
-              nextSection="/profile"
-              onClick={this.progressBarClicked}
-              numOfSubsections={3}
-              preName=""
-            />
           </div>
         );
       case 2:
@@ -98,14 +89,6 @@ class Prompt extends Component {
                 <NextBtn onClick={this.switchSection} />{" "}
               </Link>
             </div>
-            <Progress
-              QuestionNum={this.state.stage}
-              previousSection="/"
-              nextSection="/profile"
-              onClick={this.progressBarClicked}
-              numOfSubsections={3}
-              preName=""
-            />
           </div>
         );
       case 3:
@@ -114,7 +97,7 @@ class Prompt extends Component {
             <h1>
               You are UNQUALIFIED for the game{" "}
               <img
-                src="http://localhost:3000/assets/sad.svg"
+                src="./assets/sad.svg"
                 width="30px"
                 align="middle"
                 alt="default sad face"
@@ -138,21 +121,20 @@ class Prompt extends Component {
             </p>
 
             <NextBtn onClick={this.onNext} />
-
-            <Progress
-              QuestionNum={this.state.stage}
-              previousSection="/"
-              nextSection="/profile"
-              onClick={this.progressBarClicked}
-              numOfSubsections={3}
-              preName=""
-            />
           </div>
         );
     }
   }
 
   render() {
+    // <Progress
+    //   QuestionNum={this.state.stage}
+    //   previousSection="/"
+    //   nextSection="/profile"
+    //   onClick={this.progressBarClicked}
+    //   numOfSubsections={3}
+    //   preName=""
+    // />
     return (
       <div className="margin-top">{this.renderSwitch(this.state.stage)}</div>
     );

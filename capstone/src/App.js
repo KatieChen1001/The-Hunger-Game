@@ -13,7 +13,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);
-    this.renderSwitch = this.renderSwitch.bind(this);
+    // this.renderSwitch = this.renderSwitch.bind(this);
     this.onClickPassState = this.onClickPassState.bind(this);
     this.state = {
       appStage: 0,
@@ -42,7 +42,7 @@ class App extends Component {
     this.setState({
       appStage: appStageNum
     });
-    this.renderSwitch(this.state.appStage);
+    // this.renderSwitch(this.state.appStage);
   }
 
   onClickPassState(stateChange) {
@@ -57,16 +57,18 @@ class App extends Component {
     }
 
     this.onClick();
+
+    console.log(this.state.questionnaire);
   }
 
-  renderSwitch(params) {
-    switch (params) {
-      case 1:
-        return <Questionnaire onClick={this.onClickPassState} />;
-      default:
-        return <Prompt onClick={this.onClick} />;
-    }
-  }
+  // renderSwitch(params) {
+  //   switch (params) {
+  //     case 1:
+  //       return <Questionnaire onClick={this.onClickPassState} />;
+  //     default:
+  //       return <Prompt onClick={this.onClick} />;
+  //   }
+  // }
 
   render() {
     return (

@@ -15,7 +15,7 @@ class NextBtn extends Component {
     return (
       <img
         id="BackBtnImg"
-        src="http://localhost:3000/assets/back.svg"
+        src="./assets/back.svg"
         onClick={this.onClick}
         width="40px"
         alt="Back Button"

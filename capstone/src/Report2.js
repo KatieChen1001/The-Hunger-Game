@@ -17,51 +17,23 @@ class Report2 extends Component {
   }
 
   render() {
-    // const q = this.props.questionnaireData;
-    // const one = this.props.roundOneData;
+    const q = this.props.questionnaireData;
+    const one = this.props.roundOneData;
 
-    const q = {
-      foodieAlias: "Katie",
-      ninja: "ninja/fierceGirl",
-      waimai: "fanatic",
-      emoji: "emoji/greedy",
-      favorite: "pizza",
-      restaurant: "restaurant/cheap"
-    };
-
-    const one = {
-      foodGrabbed: "grab/rice",
-      sword: "pack/sword/plastic",
-      shield: "pack/shield/foil"
-    };
-
-    const lookUpWaimai = {
-      fanatic: {
-        // order frequency in the number of orders per day: 1,
-        orderFreq: "7 times above average",
-        OrderPerDay: 1,
-        badge: "report/waimai/badge/fanatic",
-        bin: "report/waimai/bin/fanatic"
-      },
-      pro: {
-        orderFreq: "3 times above average",
-        OrderPerDay: 0.7,
-        badge: "report/waimai/badge/pro",
-        bin: "report/waimai/bin/pro"
-      },
-      rookie: {
-        orderFreq: "right on average with the country",
-        OrderPerDay: 0.2,
-        badge: "report/waimai/badge/rookie",
-        bin: "report/waimai/bin/rookie"
-      },
-      amateur: {
-        orderFreq: "below national average",
-        OrderPerDay: 0.1,
-        badge: "report/waimai/badge/amateur",
-        bin: "report/waimai/bin/amateur"
-      }
-    };
+    // const q = {
+    //   foodieAlias: "Katie",
+    //   ninja: "ninja/fierceGirl",
+    //   waimai: "fanatic",
+    //   emoji: "emoji/greedy",
+    //   favorite: "pizza",
+    //   restaurant: "restaurant/cheap"
+    // };
+    //
+    // const one = {
+    //   foodGrabbed: "grab/rice",
+    //   sword: "pack/sword/plastic",
+    //   shield: "pack/shield/foil"
+    // };
 
     const lookUpRestaurant = {
       "restaurant/green": {

@@ -188,7 +188,7 @@ class RoundOne extends Component {
         return (
           <div className="roundOneWrapper">
             <p>Weapon Ready! 3, 2, 1, GO!</p>
-            <Link to="/hungerReport">
+            <Link to="/hungerReport1">
               <NextBtn onClick={this.switchSection} />
             </Link>
           </div>
@@ -203,6 +203,7 @@ class RoundOne extends Component {
               pack it well! This is your livelihood and your weapon! Choose
               wisely!
             </p>
+
             <NextBtn onClick={this.onNext} />
           </div>
         );
@@ -210,18 +211,16 @@ class RoundOne extends Component {
   }
 
   render() {
+    // <Progress
+    //   QuestionNum={this.state.stage}
+    //   previousSection="/profile"
+    //   nextSection="/hungerReport1"
+    //   onClick={this.progressBarClicked}
+    //   numOfSubsections={5}
+    //   preName="Prev"
+    // />;
     return (
-      <div className="margin-top">
-        {this.renderSwitch(this.state.stage)}
-        <Progress
-          QuestionNum={this.state.stage}
-          previousSection="/profile"
-          nextSection="/hungerReport1"
-          onClick={this.progressBarClicked}
-          numOfSubsections={5}
-          preName="Prev"
-        />
-      </div>
+      <div className="margin-top">{this.renderSwitch(this.state.stage)}</div>
     );
   }
 }

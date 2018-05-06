@@ -18,23 +18,23 @@ class Report3 extends Component {
   }
 
   render() {
-    // const q = this.props.questionnaireData;
-    // const one = this.props.roundOneData;
+    const q = this.props.questionnaireData;
+    const one = this.props.roundOneData;
 
-    const q = {
-      foodieAlias: "Katie",
-      ninja: "ninja/fierceGirl",
-      waimai: "fanatic",
-      emoji: "emoji/greedy",
-      favorite: "pizza",
-      restaurant: "restaurant/cheap"
-    };
-
-    const one = {
-      foodGrabbed: "grab/rice",
-      sword: "pack/sword/plastic",
-      shield: "pack/shield/foil"
-    };
+    // const q = {
+    //   foodieAlias: "Katie",
+    //   ninja: "ninja/fierceGirl",
+    //   waimai: "fanatic",
+    //   emoji: "emoji/greedy",
+    //   favorite: "pizza",
+    //   restaurant: "restaurant/cheap"
+    // };
+    //
+    // const one = {
+    //   foodGrabbed: "grab/rice",
+    //   sword: "pack/sword/plastic",
+    //   shield: "pack/shield/foil"
+    // };
 
     const lookUpWaimai = {
       fanatic: {

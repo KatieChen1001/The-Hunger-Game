@@ -25,7 +25,7 @@ class ImgQuestion extends Component {
       <div className="ImgQuestionWrapper" onClick={this.onClick}>
         <img
           className={imgClasses}
-          src={"http://localhost:3000/assets/" + this.props.label + ".svg"}
+          src={"./assets/" + this.props.label + ".svg"}
           alt={this.props.name}
         />
         <span className={this.props.name}>{this.props.description}</span>
