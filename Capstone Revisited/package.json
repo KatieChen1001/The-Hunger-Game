@@ -1,0 +1,15 @@
+{
+  "name": "capstone-revisited",
+  "version": "1.0.0",
+  "description": "testing backend for The Hunger Game",
+  "main": "server.js",
+  "scripts": {
+    "server": "nodemon server.js"
+  },
+  "author": "Katie Chen",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.8.10"
+  }
+}
