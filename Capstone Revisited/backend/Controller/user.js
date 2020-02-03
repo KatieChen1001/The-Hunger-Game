@@ -20,3 +20,4 @@ router.get("/", (req, res) => {
 });
 
 module.exports = router;
+// console.log(module); // this will log this module information in the console.
