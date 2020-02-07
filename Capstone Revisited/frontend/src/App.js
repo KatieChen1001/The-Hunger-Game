@@ -1,9 +1,9 @@
 import React from "react";
-import Question from "./components/Question";
+import Form from "./Components/Form";
 import "./App.css";
 
 function App() {
-  return <Question />;
+  return <Form />;
 }
 
 export default App;

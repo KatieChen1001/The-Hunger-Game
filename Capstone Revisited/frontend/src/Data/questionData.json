@@ -1,0 +1,38 @@
+[
+  {
+    "questionId": 1,
+    "questionTitle": "This is Question #1",
+    "requireInput": false,
+    "requireChoice": true,
+    "choiceImg": false,
+    "choice": ["Choice A", "Choice B", "Choice C", "Choice D"]
+  },
+  {
+    "questionId": 2,
+    "questionTitle": "This is Question #2",
+    "requireInput": false,
+    "requireChoice": true,
+    "choiceImg": true,
+    "choice": [
+      {
+        "choiceContent": "Choice A",
+        "choiceSrc": "/Images/1.jpeg"
+      },
+      {
+        "choiceContent": "Choice B",
+        "choiceSrc": "/Images/2.jpg"
+      },
+      {
+        "choiceContent": "Choice C",
+        "choiceSrc": "/Images/3.jpg"
+      }
+    ]
+  },
+  {
+    "questionId": 3,
+    "questionTitle": "This is Question #3",
+    "requireInput": true,
+    "requireChoice": false,
+    "choiceImg": false
+  }
+]
