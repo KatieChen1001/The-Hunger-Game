@@ -1,38 +1,63 @@
 [
   {
-    "questionId": 1,
-    "questionTitle": "This is Question #1",
-    "requireInput": false,
-    "requireChoice": true,
-    "choiceImg": false,
-    "choice": ["Choice A", "Choice B", "Choice C", "Choice D"]
+    "id": 1,
+    "question": {
+      "title": "question title 1",
+      "type": "input",
+      "graphics": false
+    },
+    "answer": {
+      "type": "input",
+      "graphics": false
+    }
   },
   {
-    "questionId": 2,
-    "questionTitle": "This is Question #2",
-    "requireInput": false,
-    "requireChoice": true,
-    "choiceImg": true,
-    "choice": [
-      {
-        "choiceContent": "Choice A",
-        "choiceSrc": "/Images/1.jpeg"
-      },
-      {
-        "choiceContent": "Choice B",
-        "choiceSrc": "/Images/2.jpg"
-      },
-      {
-        "choiceContent": "Choice C",
-        "choiceSrc": "/Images/3.jpg"
-      }
-    ]
+    "id": 2,
+    "question": {
+      "title": "question title 2",
+      "type": "multipleChoice",
+      "graphics": false
+    },
+    "answer": {
+      "type": "singleAnswer",
+      "graphics": true,
+      "choices": [
+        {
+          "content": "Choice A",
+          "graphicSrc": "/Images/2.jpg"
+        },
+        {
+          "content": "Choice B",
+          "graphicSrc": "/Images/2.jpg"
+        },
+        {
+          "content": "Choice C",
+          "graphicSrc": "/Images/2.jpg"
+        }
+      ]
+    }
   },
   {
-    "questionId": 3,
-    "questionTitle": "This is Question #3",
-    "requireInput": true,
-    "requireChoice": false,
-    "choiceImg": false
+    "id": 3,
+    "question": {
+      "title": "question title 3",
+      "type": "input",
+      "graphics": false
+    },
+    "answer": {
+      "type": "singleAnswer",
+      "graphics": false,
+      "choices": [
+        {
+          "content": "Choice A"
+        },
+        {
+          "content": "Choice B"
+        },
+        {
+          "content": "Choice C"
+        }
+      ]
+    }
   }
 ]
