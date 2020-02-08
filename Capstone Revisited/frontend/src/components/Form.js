@@ -3,37 +3,41 @@ import InputQuestion from "./Questions/InputQuestion.js";
 import MultiChoiceQuestion from "./Questions/MultipleChoiceQuestion.js";
 import data from "../Data/questionData.json";
 
-import axios from "axios";
+// import axios from "axios";
 
 export default class Form extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      question1: "",
-      question3: ""
-    };
+    this.state = {};
 
     this.onSubmit = this.onSubmit.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
+    this.onChoiceSelected = this.onChoiceSelected.bind(this);
   }
 
   onInputChange(inputData) {
     let questionId = "question" + inputData.nam;
     let questionValue = inputData.val;
-    console.log("Name: " + questionId);
-    console.log("Value: " + questionValue);
 
     this.setState({
-      [questionId]: [questionValue]
+      [questionId]: questionValue
     });
-    console.log(this.state.question1);
-    console.log(this.state.question3);
+    console.log(this.state);
   }
 
-  onSubmit(e) {
-    e.preventDefault();
-    console.log("submitted");
+  onChoiceSelected(choiceContent, questionId) {
+    let questionID = "question" + questionId;
+    this.setState({
+      [questionID]: choiceContent
+    });
+    console.log(this.state);
+  }
+
+  onSubmit() {
+    // e.preventDefault();
+    console.log(this.state);
+    // alert("You are submitting " + this.state);
 
     // const profile = {
     //   alias: this.state.alias,
@@ -62,16 +66,21 @@ export default class Form extends React.Component {
           />
         );
       } else if (data.question.type === "multipleChoice") {
-        return <MultiChoiceQuestion data={data} key={index} />;
+        return (
+          <MultiChoiceQuestion
+            data={data}
+            key={index}
+            questionId={data.id}
+            onChoiceSelected={this.onChoiceSelected}
+          />
+        );
       }
     });
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form>
         <div className="questionContainer">{questionBlock}</div>
-        <input type="submit" value="Submit" />
-        <h1>{this.state.question1}</h1>
-        <h1>{this.state.question3}</h1>
+        <button onSubmit={this.onSubmit}>Submit</button>
       </form>
     );
   }

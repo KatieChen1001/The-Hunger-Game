@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import "./AnswerGraphics.css";
 
-export default class AnswerGraphics extends React.Component {
+export default class Answer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,7 +22,6 @@ export default class AnswerGraphics extends React.Component {
         id={this.props.data.answerId}
         className={btn_class}
       >
-        <img src={this.props.data.graphicSrc} width="100px" height="100%" />
         <p>{this.props.data.content}</p>
       </button>
     );

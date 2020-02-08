@@ -23,14 +23,17 @@
       "graphics": true,
       "choices": [
         {
+          "answerId": 201,
           "content": "Choice A",
           "graphicSrc": "/Images/2.jpg"
         },
         {
+          "answerId": 202,
           "content": "Choice B",
           "graphicSrc": "/Images/2.jpg"
         },
         {
+          "answerId": 203,
           "content": "Choice C",
           "graphicSrc": "/Images/2.jpg"
         }
@@ -41,7 +44,7 @@
     "id": 3,
     "question": {
       "title": "question title 3",
-      "type": "input",
+      "type": "multipleChoice",
       "graphics": false
     },
     "answer": {
@@ -49,13 +52,45 @@
       "graphics": false,
       "choices": [
         {
+          "answerId": 301,
           "content": "Choice A"
         },
         {
+          "answerId": 302,
           "content": "Choice B"
         },
         {
+          "answerId": 303,
           "content": "Choice C"
+        }
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "question": {
+      "title": "question title 4",
+      "type": "multipleChoice",
+      "graphics": false
+    },
+    "answer": {
+      "type": "singleAnswer",
+      "graphics": true,
+      "choices": [
+        {
+          "answerId": 401,
+          "content": "Choice A",
+          "graphicSrc": "/Images/2.jpg"
+        },
+        {
+          "answerId": 402,
+          "content": "Choice B",
+          "graphicSrc": "/Images/2.jpg"
+        },
+        {
+          "answerId": 403,
+          "content": "Choice C",
+          "graphicSrc": "/Images/2.jpg"
         }
       ]
     }

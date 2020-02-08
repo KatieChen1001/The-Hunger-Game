@@ -1,7 +1,17 @@
 import React, { Component } from "react";
 import AnswerGraphics from "../Answers/AnswerGraphics";
+import Answer from "../Answers/Answer";
 
 export default class MultiChoiceQuestion extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.onChoiceSelected = this.onChoiceSelected.bind(this);
+  }
+
+  onChoiceSelected(choiceContent) {
+    this.props.onChoiceSelected(choiceContent, this.props.questionId);
+  }
   render() {
     let options;
     let answerData = this.props.data.answer;
@@ -10,8 +20,8 @@ export default class MultiChoiceQuestion extends React.Component {
       options = answerData.choices.map((choices, index) => {
         return (
           <AnswerGraphics
-            content={choices.content}
-            graphicSrc={choices.graphicSrc}
+            data={choices}
+            onChoiceSelected={this.onChoiceSelected}
           />
         );
       });
@@ -19,9 +29,7 @@ export default class MultiChoiceQuestion extends React.Component {
       // render options w/o graphics
       options = answerData.choices.map((choices, index) => {
         return (
-          <div>
-            <button>{choices.content}</button>
-          </div>
+          <Answer data={choices} onChoiceSelected={this.onChoiceSelected} />
         );
       });
     }
