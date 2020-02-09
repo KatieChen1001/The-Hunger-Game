@@ -25,9 +25,9 @@ export default class Form extends React.Component {
     );
   }
 
-  onChoiceSelected(choiceContent, questionId) {
+  onChoiceSelected(answerId, questionId) {
     let questionID = "question" + questionId;
-    this.setState({ [questionID]: choiceContent },
+    this.setState({ [questionID]: answerId },
       () => { console.log(this.state); }
     );
   }
@@ -64,12 +64,14 @@ export default class Form extends React.Component {
           />
         );
       } else if (data.question.type === "multipleChoice") {
+        let questionId = "question" + data.id;
         return (
           <MultiChoiceQuestion
             data={data}
-            key={index}
+            key={questionId}
             questionId={data.id}
             onChoiceSelected={this.onChoiceSelected}
+            selectedAnswer={this.state[questionId]}
           />
         );
       }

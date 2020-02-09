@@ -8,20 +8,25 @@ export default class MultiChoiceQuestion extends React.Component {
     this.onChoiceSelected = this.onChoiceSelected.bind(this);
   }
 
-  onChoiceSelected(choiceContent) {
-    this.props.onChoiceSelected(choiceContent, this.props.questionId);
+  onChoiceSelected(answerId) {
+    this.props.onChoiceSelected(answerId, this.props.questionId);
   }
   render() {
     let options;
     let answerData = this.props.data.answer;
     
-    // Render options w. graphics
-    options = answerData.choices.map((choices, index) => {
+    // Render options and highlight the selected one.
+    options = answerData.choices.map((choice, index) => {
+      let selected = false;
+      if (choice.answerId == this.props.selectedAnswer) {
+        selected = true;
+      }
       return (
         <Answer
-          data={choices}
+          data={choice}
           onChoiceSelected={this.onChoiceSelected}
           key={`multichoice-${index}`}
+          selected={selected}
         />
       );
     });
