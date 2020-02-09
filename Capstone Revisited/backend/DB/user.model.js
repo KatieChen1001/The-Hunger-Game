@@ -2,12 +2,21 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema(
   {
-    alias: {
+    question1: {
       type: String,
       required: true
     },
-    frequency: {
-      type: String
+    question2: {
+      type: String,
+      required: true
+    },
+    question3: {
+      type: String,
+      required: true
+    },
+    question4: {
+      type: String,
+      required: true
     }
   },
   {

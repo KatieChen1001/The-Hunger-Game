@@ -34,8 +34,8 @@ export default class Form extends React.Component {
     console.log(this.state);
   }
 
-  onSubmit() {
-    // e.preventDefault();
+  onSubmit(e) {
+    e.preventDefault();
     console.log(this.state);
     // alert("You are submitting " + this.state);
 
@@ -78,9 +78,9 @@ export default class Form extends React.Component {
     });
 
     return (
-      <form>
+      <form onSubmit={this.onSubmit}>
         <div className="questionContainer">{questionBlock}</div>
-        <button onSubmit={this.onSubmit}>Submit</button>
+        <input type="submit" value="Submit" />
       </form>
     );
   }
