@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import InputQuestion from "./Questions/InputQuestion.js";
-import MultiChoiceQuestion from "./Questions/MultipleChoiceQuestion.js";
+import InputQuestion from "./Questions/InputQuestion.jsx";
+import MultiChoiceQuestion from "./Questions/MultipleChoiceQuestion.jsx";
 import data from "../Data/questionData.json";
 
 // import axios from "axios";
@@ -19,19 +19,17 @@ export default class Form extends React.Component {
   onInputChange(inputData) {
     let questionId = "question" + inputData.nam;
     let questionValue = inputData.val;
-
-    this.setState({
-      [questionId]: questionValue
+    // Log the state as callback of setState
+    this.setState({ [questionId]: questionValue }, () => {
+      console.log(this.state);
     });
-    console.log(this.state);
   }
 
-  onChoiceSelected(choiceContent, questionId) {
+  onChoiceSelected(answerId, questionId) {
     let questionID = "question" + questionId;
-    this.setState({
-      [questionID]: choiceContent
+    this.setState({ [questionID]: answerId }, () => {
+      console.log(this.state);
     });
-    console.log(this.state);
   }
 
   onSubmit(e) {
@@ -66,12 +64,14 @@ export default class Form extends React.Component {
           />
         );
       } else if (data.question.type === "multipleChoice") {
+        let questionId = "question" + data.id;
         return (
           <MultiChoiceQuestion
             data={data}
-            key={index}
+            key={questionId}
             questionId={data.id}
             onChoiceSelected={this.onChoiceSelected}
+            selectedAnswer={this.state[questionId]}
           />
         );
       }
