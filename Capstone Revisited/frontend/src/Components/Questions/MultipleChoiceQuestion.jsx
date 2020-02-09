@@ -22,6 +22,7 @@ export default class MultiChoiceQuestion extends React.Component {
           <AnswerGraphics
             data={choices}
             onChoiceSelected={this.onChoiceSelected}
+            key={`multichoice-${index}`}
           />
         );
       });
@@ -29,7 +30,7 @@ export default class MultiChoiceQuestion extends React.Component {
       // render options w/o graphics
       options = answerData.choices.map((choices, index) => {
         return (
-          <Answer data={choices} onChoiceSelected={this.onChoiceSelected} />
+          <Answer data={choices} onChoiceSelected={this.onChoiceSelected} key={`multichoice-${index}`}/>
         );
       });
     }

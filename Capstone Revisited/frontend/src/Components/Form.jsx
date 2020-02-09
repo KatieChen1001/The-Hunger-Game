@@ -19,7 +19,7 @@ export default class Form extends React.Component {
   onInputChange(inputData) {
     let questionId = "question" + inputData.nam;
     let questionValue = inputData.val;
-
+    // Log the state as callback of setState
     this.setState({ [questionId]: questionValue }, 
       () => { console.log(this.state); }
     );
@@ -33,7 +33,7 @@ export default class Form extends React.Component {
   }
 
   onSubmit() {
-    // e.preventDefault();
+    e.preventDefault();
     console.log(this.state);
     // alert("You are submitting " + this.state);
 
@@ -76,9 +76,9 @@ export default class Form extends React.Component {
     });
 
     return (
-      <form>
+      <form onSubmit={this.onSubmit}>
         <div className="questionContainer">{questionBlock}</div>
-        <button onSubmit={this.onSubmit}>Submit</button>
+        <input type="submit" value="Submit" />
       </form>
     );
   }
