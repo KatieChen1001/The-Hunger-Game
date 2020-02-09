@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import AnswerGraphics from "../Answers/AnswerGraphics";
-import Answer from "../Answers/Answer";
+import Answer from "../Answers/Answer.jsx";
 
 export default class MultiChoiceQuestion extends React.Component {
   constructor(props) {
@@ -15,25 +14,18 @@ export default class MultiChoiceQuestion extends React.Component {
   render() {
     let options;
     let answerData = this.props.data.answer;
-    if (answerData.graphics) {
-      // render options w. graphics
-      options = answerData.choices.map((choices, index) => {
-        return (
-          <AnswerGraphics
-            data={choices}
-            onChoiceSelected={this.onChoiceSelected}
-            key={`multichoice-${index}`}
-          />
-        );
-      });
-    } else {
-      // render options w/o graphics
-      options = answerData.choices.map((choices, index) => {
-        return (
-          <Answer data={choices} onChoiceSelected={this.onChoiceSelected} key={`multichoice-${index}`}/>
-        );
-      });
-    }
+    
+    // Render options w. graphics
+    options = answerData.choices.map((choices, index) => {
+      return (
+        <Answer
+          data={choices}
+          onChoiceSelected={this.onChoiceSelected}
+          key={`multichoice-${index}`}
+        />
+      );
+    });
+
     return (
       <div>
         <h1>{this.props.data.question.title}</h1>
