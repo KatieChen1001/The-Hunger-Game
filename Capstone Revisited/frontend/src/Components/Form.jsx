@@ -3,7 +3,7 @@ import InputQuestion from "./Questions/InputQuestion.jsx";
 import MultiChoiceQuestion from "./Questions/MultipleChoiceQuestion.jsx";
 import data from "../Data/questionData.json";
 
-// import axios from "axios";
+import axios from "axios";
 
 export default class Form extends React.Component {
   constructor(props) {
@@ -34,20 +34,13 @@ export default class Form extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
-    // alert("You are submitting " + this.state);
-
-    // const profile = {
-    //   alias: this.state.alias,
-    //   frequency: this.state.frequency
-    // };
-    //
+    // console.log(this.state);
+    const profile = this.state;
     // console.log(profile);
-    //
-    // axios
-    //   .post("http://localhost:3000/", profile)
-    //   .then(res => console.log(res.data));
-    //
+    axios
+      .post("http://localhost:3000/", profile)
+      .then(res => console.log(res.data));
+
     // window.location = "/";
   }
 

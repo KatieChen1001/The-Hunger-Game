@@ -4,10 +4,14 @@ const User = require("../DB/user.model");
 const router = express.Router();
 
 router.post("/", (req, res) => {
-  const alias = req.body.alias;
-  const frequency = req.body.frequency;
+  const profile = req.body.profile;
 
-  let newUser = new User({ alias, frequency });
+  let newUser = new User({
+    question1: req.body.question1,
+    question2: req.body.question2,
+    question3: req.body.question3,
+    question4: req.body.question4
+  });
 
   newUser
     .save()

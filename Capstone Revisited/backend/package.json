@@ -2,7 +2,7 @@
   "name": "capstone-revisited",
   "version": "1.0.0",
   "description": "testing backend for The Hunger Game",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "server": "nodemon server.js"
   },

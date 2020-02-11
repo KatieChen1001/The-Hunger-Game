@@ -7,15 +7,15 @@ const userSchema = new mongoose.Schema(
       required: true
     },
     question2: {
-      type: String,
+      type: Number,
       required: true
     },
     question3: {
-      type: String,
+      type: Number,
       required: true
     },
     question4: {
-      type: String,
+      type: Number,
       required: true
     }
   },
