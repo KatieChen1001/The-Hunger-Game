@@ -13,9 +13,11 @@ router.post("/", (req, res) => {
     question4: req.body.question4
   });
 
+  newUser.url = new mongoose.Types.ObjectId();
+
   newUser
     .save()
-    .then(() => res.json("User added!"))
+    .then(() => res.json(newUser.url))
     .catch(err => res.status(400).json("Error: " + err));
 });
 

@@ -20,16 +20,12 @@ export default class Form extends React.Component {
     let questionId = "question" + inputData.nam;
     let questionValue = inputData.val;
     // Log the state as callback of setState
-    this.setState({ [questionId]: questionValue }, () => {
-      console.log(this.state);
-    });
+    this.setState({ [questionId]: questionValue });
   }
 
   onChoiceSelected(answerId, questionId) {
     let questionID = "question" + questionId;
-    this.setState({ [questionID]: answerId }, () => {
-      console.log(this.state);
-    });
+    this.setState({ [questionID]: answerId });
   }
 
   onSubmit(e) {

@@ -17,7 +17,8 @@ const userSchema = new mongoose.Schema(
     question4: {
       type: Number,
       required: true
-    }
+    },
+    url: mongoose.ObjectId
   },
   {
     timestamps: true
