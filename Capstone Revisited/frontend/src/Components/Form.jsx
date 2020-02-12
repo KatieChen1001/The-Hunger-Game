@@ -30,14 +30,12 @@ export default class Form extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    // console.log(this.state);
     const profile = this.state;
-    // console.log(profile);
-    axios
-      .post("http://localhost:3000/", profile)
-      .then(res => console.log(res.data));
-
-    // window.location = "/";
+    let params;
+    axios.post("http://localhost:3000/", profile).then(res => {
+      console.log(res.data);
+      window.location = "/hungerReport/" + res.data;
+    });
   }
 
   render() {

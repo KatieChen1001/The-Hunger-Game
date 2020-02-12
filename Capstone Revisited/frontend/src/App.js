@@ -1,9 +1,16 @@
 import React from "react";
 import Form from "./Components/Form.jsx";
-import "./App.css";
+import Report from "./Components/Report.jsx";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+// import "./App.css";
 
-function App() {
-  return <Form />;
+export default function App() {
+  return (
+    <Router>
+      <div>
+        <Route path="/" exact component={Form} />
+        <Route path="/hungerReport/:id" component={Report} />
+      </div>
+    </Router>
+  );
 }
-
-export default App;

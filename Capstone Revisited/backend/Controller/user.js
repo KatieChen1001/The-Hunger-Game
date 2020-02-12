@@ -13,16 +13,16 @@ router.post("/", (req, res) => {
     question4: req.body.question4
   });
 
-  newUser.url = new mongoose.Types.ObjectId();
-
   newUser
     .save()
-    .then(() => res.json(newUser.url))
+    .then(() => res.json(newUser._id))
     .catch(err => res.status(400).json("Error: " + err));
 });
 
-router.get("/", (req, res) => {
-  res.json("My backend server is here and running");
+router.get("/hungerReport/:id", (req, res) => {
+  User.findById(req.params.id)
+    .then(user => res.json(user))
+    .catch(err => res.status(400).json("Error" + err));
 });
 
 module.exports = router;
