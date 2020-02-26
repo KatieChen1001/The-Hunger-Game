@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Answer from "../Answers/Answer.jsx";
+import "../questionblock.css";
+import "./MultipleChoiceQuestion.css";
 
 export default class MultiChoiceQuestion extends React.Component {
   constructor(props) {
@@ -14,7 +16,7 @@ export default class MultiChoiceQuestion extends React.Component {
   render() {
     let options;
     let answerData = this.props.data.answer;
-    
+
     // Render options and highlight the selected one.
     options = answerData.choices.map((choice, index) => {
       let selected = false;
@@ -32,9 +34,10 @@ export default class MultiChoiceQuestion extends React.Component {
     });
 
     return (
-      <div>
-        <h1>{this.props.data.question.title}</h1>
-        {options}
+      <div className="questionblock">
+        <h1 className="questionnum">QUESTION {this.props.data.id}</h1>
+        <h2 className="questioncontent">{this.props.data.question.title}</h2>
+        <ul class="listcontainer">{options}</ul>
       </div>
     );
   }

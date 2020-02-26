@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import InputQuestion from "./Questions/InputQuestion.jsx";
 import MultiChoiceQuestion from "./Questions/MultipleChoiceQuestion.jsx";
 import data from "../Data/questionData.json";
+import "./Form.css";
 
 import axios from "axios";
 
@@ -65,10 +66,28 @@ export default class Form extends React.Component {
     });
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <div className="questionContainer">{questionBlock}</div>
-        <input type="submit" value="Submit" />
-      </form>
+      <div>
+        <div class="titleimg"></div>
+        <div class="titlecontainer w-container">
+          <h1 class="titlestylecursive">Build Your Own</h1>
+          <h1 class="titlestyle">HUNGER REPORT</h1>
+        </div>
+        <div className="div-block">
+          <div className="questioncontainer w-container">
+            <div className="w-form">
+              <form onSubmit={this.onSubmit} className="form">
+                {questionBlock}
+                <input
+                  type="submit"
+                  value="GENERATE MY HUNGER REPORT"
+                  data-wait="Your Highly Hypothetical Answer to Serious Questions Are Being Generated ..."
+                  class="button btnanswer submitbtn w-button"
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

@@ -15,17 +15,25 @@ export default class Answer extends React.Component {
     let button_class = this.props.selected ? "selected" : "unselected";
 
     return (
-      <button
-        onClick={this.onClick}
-        type="button"
-        id={this.props.data.answerId}
-        className={button_class}
-      >
-      {this.props.data.graphicSrc ? 
-        <img src={this.props.data.graphicSrc} width="100px" height="100%" /> : null
-      }
-      <p>{this.props.data.content}</p>
-      </button>
+      <li className="listitem">
+        <button
+          onClick={this.onClick}
+          type="button"
+          id={this.props.data.answerId}
+          className={button_class}
+        >
+          {this.props.data.graphicSrc ? (
+            <img
+              src={this.props.data.graphicSrc}
+              width="140"
+              height="140"
+              alt=""
+              class="imganswer"
+            />
+          ) : null}
+          <p>{this.props.data.content}</p>
+        </button>
+      </li>
     );
   }
 }

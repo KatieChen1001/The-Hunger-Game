@@ -2,7 +2,7 @@
   {
     "id": 1,
     "question": {
-      "title": "question title 1",
+      "title": "What ninja alias would you pick for yourself? ",
       "type": "input",
       "graphics": false
     },
@@ -14,28 +14,28 @@
   {
     "id": 2,
     "question": {
-      "title": "question title 2",
+      "title": "Which one of the ninja avatar resembles you the most?",
       "type": "multipleChoice",
       "graphics": false
     },
     "answer": {
       "type": "singleAnswer",
-      "graphics": true,
+      "graphics": false,
       "choices": [
         {
           "answerId": 201,
           "content": "Choice A",
-          "graphicSrc": "/Images/2.jpg"
+          "graphicSrc": "https://via.placeholder.com/140x140.png"
         },
         {
           "answerId": 202,
           "content": "Choice B",
-          "graphicSrc": "/Images/2.jpg"
+          "graphicSrc": "https://via.placeholder.com/140x140.png"
         },
         {
           "answerId": 203,
           "content": "Choice C",
-          "graphicSrc": "/Images/2.jpg"
+          "graphicSrc": "https://via.placeholder.com/140x140.png"
         }
       ]
     }
@@ -62,7 +62,8 @@
         {
           "answerId": 303,
           "content": "Choice C"
-        }
+        },
+        { "answerId": 304, "content": "Choice D" }
       ]
     }
   },
@@ -80,17 +81,22 @@
         {
           "answerId": 401,
           "content": "Choice A",
-          "graphicSrc": "/Images/2.jpg"
+          "graphicSrc": "https://via.placeholder.com/140x140.png"
         },
         {
           "answerId": 402,
           "content": "Choice B",
-          "graphicSrc": "/Images/2.jpg"
+          "graphicSrc": "https://via.placeholder.com/140x140.png"
         },
         {
           "answerId": 403,
           "content": "Choice C",
-          "graphicSrc": "/Images/2.jpg"
+          "graphicSrc": "https://via.placeholder.com/140x140.png"
+        },
+        {
+          "answerId": 404,
+          "content": "Choice D",
+          "graphicSrc": "https://via.placeholder.com/140x140.png"
         }
       ]
     }
